@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
+      //SafeAreaにすることで日付表示などに被らない
       home: SafeArea(child: ScreenControl()),
     );
   }
