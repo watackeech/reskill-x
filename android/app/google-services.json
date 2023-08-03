@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "214236206554",
+    "project_id": "reskil-x",
+    "storage_bucket": "reskil-x.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214236206554:android:c48a46bc3bb87a9901dce3",
+        "android_client_info": {
+          "package_name": "jp.co.benesse.reskill_x"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214236206554-flqund27k3k3vopdv2o8ous1ramajr9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_Hvhp9T9cVoJSn1lZUYqu2LtXbJ0B2os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214236206554-flqund27k3k3vopdv2o8ous1ramajr9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214236206554:android:3e51aabe5682c7f801dce3",
+        "android_client_info": {
+          "package_name": "jp.co.benesse.reskillx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214236206554-flqund27k3k3vopdv2o8ous1ramajr9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_Hvhp9T9cVoJSn1lZUYqu2LtXbJ0B2os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214236206554-flqund27k3k3vopdv2o8ous1ramajr9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
