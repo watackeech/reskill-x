@@ -17,7 +17,6 @@ class _ScreenControlState extends State<ScreenControl> {
 
   final List<Widget> _pageNo = [GoalScreen(), HomeScreen(), AccountScreen()];
 
-
   @override
   Widget build(BuildContext context) {
 

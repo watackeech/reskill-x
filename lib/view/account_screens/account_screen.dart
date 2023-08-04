@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/component/main_button.dart';
 import 'package:reskill_x/constant/colors.dart';
-import 'package:reskill_x/view/account_screens/edit_account_screen.dart';
+import 'package:reskill_x/component/edit_account_screen.dart';
 
 import '../../model/account.dart';
 import '../../utils/authentication.dart';
@@ -30,7 +30,7 @@ class _AccountScreenState extends State<AccountScreen> {
               child: Icon(Icons.add),
             ),
             MainButton(buttonColor: kPrime, buttonTitle: "編集へ", onTapped: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => EditAccountScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => EditAccountScreen()));
             })
           ],
         ),
