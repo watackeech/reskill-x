@@ -8,8 +8,11 @@ import 'package:reskill_x/component/main_button.dart';
 import 'package:reskill_x/component/text_input_field.dart';
 import 'package:reskill_x/constant/colors.dart';
 import 'package:reskill_x/utils/authentication.dart';
-import 'package:reskill_x/view/home_screen.dart';
-import 'package:reskill_x/view/login_screen.dart';
+import 'package:reskill_x/view/screen_control.dart';
+
+import '../../model/account.dart';
+import '../../utils/firestore/user_firestore.dart';
+import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -35,11 +38,14 @@ class _SignupScreenState extends State<SignupScreen> {
     }
   }
 
-  Future<void> uploadImage(String uid) async{
+  Future<String> uploadImage(String uid) async{
     final FirebaseStorage storageInstance = FirebaseStorage.instance;
     final Reference ref = storageInstance.ref();
     //ファイルのアップロード
     await ref.child(uid).putFile(image!);
+    String downloadUrl = await storageInstance.ref(uid).getDownloadURL();
+    print('image_pathは、: $downloadUrl');
+    return downloadUrl;
   }
 
 
@@ -98,7 +104,18 @@ class _SignupScreenState extends State<SignupScreen> {
                   if(userNameController.text.isNotEmpty && emailController.text.isNotEmpty && passwordController.text.isNotEmpty && image != null){
                     var result = await Authentication.signUp(email: emailController.text, password: passwordController.text);
                     if(result is UserCredential){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                      String imagePath = await uploadImage(result.user!.uid);
+                      Account newAccount = Account(
+                        id: result.user!.uid,
+                        name: userNameController.text,
+                        userId: emailController.text,
+                        imagePath: imagePath,
+                      );
+                      var _result = await UserFirestore.setUser(newAccount);
+                      if(_result is Account){
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('ユーザーが作成できました')));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ScreenControl()));
+                      }
                     }
                   }
                 },

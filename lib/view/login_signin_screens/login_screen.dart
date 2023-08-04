@@ -1,9 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:reskill_x/component/main_button.dart';
 import 'package:reskill_x/component/text_input_field.dart';
 import 'package:reskill_x/constant/colors.dart';
+import 'package:reskill_x/model/account.dart';
 import 'package:reskill_x/utils/authentication.dart';
-import 'package:reskill_x/view/signup_screen.dart';
+import 'package:reskill_x/utils/firestore/user_firestore.dart';
+import 'package:reskill_x/view/account_screens/account_screen.dart';
+import 'package:reskill_x/view/login_signin_screens/signup_screen.dart';
+import 'package:reskill_x/view/screen_control.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -53,10 +58,15 @@ class _LoginScreenState extends State<LoginScreen> {
               MainButton(
                 buttonColor: kPrime,
                 buttonTitle: 'ログイン',
-                onTapped: () {
-                  Authentication.login(
-                      email: emailController.text,
-                      password: passwordController.text);
+                onTapped: () async {
+                    var result = await Authentication.login(email: emailController.text, password: passwordController.text);
+                    if(result is UserCredential){
+                      await UserFirestore.getUser(result.user!.uid);
+                      var _result = await UserFirestore.getUser(result.user!.uid);
+                      if(_result is Account){
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ScreenControl()));
+                      }
+                    }
                 },
               ),
               Row(
