@@ -7,3 +7,4 @@ const kBlack = Color(0xFF1C1D1F);
 const kWhite = Color(0xFFFFFFFF);
 const kGrey = Color(0xff727272);
 const kLightGrey = Color(0xffbdbdbd);
+const kBronze = Color(0xffc57900);
