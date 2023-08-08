@@ -8,11 +8,13 @@ import 'main_button.dart';
 class NumberScroll extends StatefulWidget {
   const NumberScroll({super.key,
   required this.upperText,
-  required this.buttonText
+  required this.buttonText,
+    required this.onPressed
   });
 
   final String upperText;
   final String buttonText;
+  final Function(int) onPressed;
 
   @override
   State<NumberScroll> createState() => _NumberScrollState();
@@ -58,6 +60,7 @@ class _NumberScrollState extends State<NumberScroll> {
           // ボタンが押されたときに選択された数字を取得する
             int selectedNumber = _currentValue;
             print('選択された数字: $selectedNumber');
+
           },
         ),
       ],

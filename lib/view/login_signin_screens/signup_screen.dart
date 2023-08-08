@@ -39,6 +39,7 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future<String> uploadImage(String uid) async{
+    print('$uid これがuid');
     final FirebaseStorage storageInstance = FirebaseStorage.instance;
     final Reference ref = storageInstance.ref();
     //ファイルのアップロード
@@ -110,6 +111,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         name: userNameController.text,
                         userId: emailController.text,
                         imagePath: imagePath,
+                        exp: 0 //新規登録したときの初期値は0
                       );
                       var _result = await UserFirestore.setUser(newAccount);
                       if(_result is Account){

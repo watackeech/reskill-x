@@ -7,6 +7,7 @@ class Account{
   String userId;
   Timestamp? createdTime;
   Timestamp? updatedTime;
+  int exp;
 
-  Account({required this.id, required this.name, required this.userId, this.imagePath = '', this.createdTime, this.updatedTime});
+  Account({required this.id, required this.name, required this.userId, this.imagePath = '', this.createdTime, this.updatedTime, required this.exp});
 }
