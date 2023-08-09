@@ -20,9 +20,9 @@ class AlertDialogComponent extends StatelessWidget {
         children:[
       Padding(
         padding: const EdgeInsets.only(
-            right: 10,
-            left: 10,
-            bottom: 10
+          right: 10,
+          left: 10,
+          bottom: 10
         ),
         child: MainButton(
           buttonColor: kGrey,
@@ -30,19 +30,31 @@ class AlertDialogComponent extends StatelessWidget {
           onTapped: () {
             Navigator.pop(context);
           },
+          textStyle: TextStyle(
+            color: kWhite,
+            fontWeight: FontWeight.bold,
+            fontSize: 16
+          ),
+          minWidth: 110,
         ),
       ),
       Padding(
       padding: const EdgeInsets.only(
-      left: 10,
-      right: 10,
-      bottom: 10
+        left: 10,
+        right: 10,
+        bottom: 10
       ),
         child: MainButton(
           buttonColor: kPrime,
-          buttonTitle: '    確定   ',
+          buttonTitle: '確定',
           onTapped: () {
           },
+          textStyle: TextStyle(
+            color: kWhite,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          minWidth: 110,
         ),
       ),
     ],
