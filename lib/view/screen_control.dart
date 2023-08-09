@@ -39,9 +39,7 @@ class _ScreenControlState extends State<ScreenControl> {
                 selectedPage = index;
               });
             },
-          ),
-        floatingActionButton: FloatingActionButton(onPressed: () {  },),
-      ),
+          )),
     );
   }
 }

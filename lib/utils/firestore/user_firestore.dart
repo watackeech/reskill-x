@@ -15,8 +15,7 @@ class UserFirestore {
         'user_id': newAccount.userId,
         'image_path': newAccount.imagePath,
         'created_time': Timestamp.now(),
-        'updated_time': Timestamp.now(),
-        'exp': newAccount.exp
+        'updated_time': Timestamp.now()
       });
       return getUser(newAccount.id);
     } on FirebaseException catch (e) {
