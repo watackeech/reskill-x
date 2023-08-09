@@ -3,16 +3,20 @@ import '../constant/colors.dart';
 import 'main_button.dart';
 
 class AlertDialogComponent extends StatelessWidget {
-  const AlertDialogComponent({super.key});
+  const AlertDialogComponent({super.key, required this.title, required this.onTapped, required this.hour, required this.minute});
+  final String title;
+  final int hour;
+  final int minute;
+  final VoidCallback onTapped;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('目標',
+      title:  Text(title,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 20, color: kBlack, fontWeight: FontWeight.bold),),
       //選択された値をもってくるときのVer(　Text(selectedNumber時間')　)henkou
-      content: const Text('2時間',
+      content:  Text( '${hour}時間${minute}分',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 40, color: kBlack, fontWeight: FontWeight.bold),),
       actions: <Widget>[
@@ -33,7 +37,7 @@ class AlertDialogComponent extends StatelessWidget {
           textStyle: TextStyle(
             color: kWhite,
             fontWeight: FontWeight.bold,
-            fontSize: 16
+            fontSize: 16,
           ),
           minWidth: 110,
         ),
@@ -47,8 +51,7 @@ class AlertDialogComponent extends StatelessWidget {
         child: MainButton(
           buttonColor: kPrime,
           buttonTitle: '確定',
-          onTapped: () {
-          },
+          onTapped: onTapped,
           textStyle: TextStyle(
             color: kWhite,
             fontWeight: FontWeight.bold,
