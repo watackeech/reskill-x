@@ -121,6 +121,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     }
                   }
                 },
+                textStyle: TextStyle(
+                  color: kWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+                minWidth: 110,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -68,6 +68,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                     }
                 },
+                textStyle: TextStyle(
+                  color: kWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+                minWidth: 110,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -31,7 +31,14 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
             ),
             MainButton(buttonColor: kPrime, buttonTitle: "アカウントスクリーンへ", onTapped: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => AccountScreen()));
-            })
+            },
+              textStyle: TextStyle(
+                color: kWhite,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+              minWidth: 110,
+            )
           ],
         ),
       ),
