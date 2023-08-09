@@ -1,9 +1,13 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:reskill_x/view/goal_screans/goal_screen.dart';
+import '../component/point_icon.dart';
 import '../constant/colors.dart';
+import '../model/account.dart';
+import '../utils/authentication.dart';
 import 'account_screens/account_screen.dart';
 import 'home_screen.dart';
+import 'memo_screens/memo_list_Screen.dart';
 
 class ScreenControl extends StatefulWidget {
   const ScreenControl({super.key});
@@ -13,15 +17,24 @@ class ScreenControl extends StatefulWidget {
 }
 
 class _ScreenControlState extends State<ScreenControl> {
+  Account myAccount = Authentication.myAccount!;
   int selectedPage = 1; // インスタンス変数として宣言
 
-  final List<Widget> _pageNo = [GoalScreen(), HomeScreen(), AccountScreen()];
+  final List<Widget> _pageNo = [MemoListScreen(), HomeScreen(), GoalScreen(), AccountScreen()];
 
   @override
   Widget build(BuildContext context) {
 
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              PointIcon(imageUrl: myAccount.imagePath, gradeColor: kBronze,),
+            ],
+          ),
+        ),
           body: Center(
             child: _pageNo[selectedPage],
           ),
@@ -29,8 +42,9 @@ class _ScreenControlState extends State<ScreenControl> {
           bottomNavigationBar: ConvexAppBar(
             backgroundColor: kPrime,
             items: [
-              TabItem(icon: Icons.flag, title: '目標・進捗'),
+              TabItem(icon: Icons.edit_note , title: 'メモ'),
               TabItem(icon: Icons.home, title: 'ホーム'),
+              TabItem(icon: Icons.flag, title: '目標・進捗'),
               TabItem(icon: Icons.person, title: 'アカウント'),
             ],
             initialActiveIndex: selectedPage,
