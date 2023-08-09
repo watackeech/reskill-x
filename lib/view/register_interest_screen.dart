@@ -4,6 +4,8 @@ import 'package:reskill_x/component/main_button.dart';
 
 import '../constant/colors.dart';
 
+
+
 class RegisterInterestScreen extends StatelessWidget {
   const RegisterInterestScreen({super.key});
 
@@ -59,7 +61,7 @@ class RegisterInterestScreen extends StatelessWidget {
                   print(interestedField![i]);
                 }
               }else{
-                print('一つは選択しましょう');
+                print('一つは選択しましょう!');
               }
             },
                 textStyle: TextStyle(color: kWhite, fontSize: 24, fontWeight: FontWeight.bold))
