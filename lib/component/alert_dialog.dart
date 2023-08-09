@@ -11,7 +11,7 @@ class AlertDialogComponent extends StatelessWidget {
       title: const Text('目標',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 20, color: kBlack, fontWeight: FontWeight.bold),),
-      //選択された値をもってくるときのVer(　Text(selectedNumber時間')　)
+      //選択された値をもってくるときのVer(　Text(selectedNumber時間')　)henkou
       content: const Text('2時間',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 40, color: kBlack, fontWeight: FontWeight.bold),),
