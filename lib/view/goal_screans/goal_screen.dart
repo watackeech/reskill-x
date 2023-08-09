@@ -25,49 +25,23 @@ class _GoalScreenState extends State<GoalScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text("目標画面"),
       ),
-      body: Center(
+      body: SizedBox(
+      height: size.height * 0.6,
         child:
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // NumberScroll(
-              //     upperText: '目標時間を設定してください',
-              //     buttonText: '目標確定',
-              //     onPressed: (int selectedHour) async {
-              //       print('Firebase処理に入ります。');
-              //       WeeklyPlan newWeeklyPlan = WeeklyPlan(
-              //           accountId: myAccount.userId,
-              //           hour: selectedHour
-              //       );
-              //       var result = await WeeklyPlanFirestore.addWeeklyPlan(newWeeklyPlan);
-              //       if(result == true) {
-              //         Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenControl()));
-              //       }
-              //     },
-              // ),
-              NumberPicker(
-                //数字選択するやつ
-                value: _selectedHour,
-                minValue: 0,
-                maxValue: 100,
-                onChanged: (value) => setState(() => _selectedHour = value),
-              ),
-              MainButton(buttonColor: kPrime, buttonTitle: '目標確定',
-                  onTapped: () async {
-                    print('Firebase処理に入ります。');
-                    WeeklyPlan newWeeklyPlan = WeeklyPlan(
-                        accountId: myAccount.id,
-                        hour: _selectedHour
-                    );
-                    var result = await WeeklyPlanFirestore.addWeeklyPlan(newWeeklyPlan);
-                    if(result == true) {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenControl()));
-                    }
-                  }
-              )
+               NumberScroll(
+                   upperText: '目標時間を設定してください',
+                   buttonText: '目標確定',
+                   alertA: '週間目標時間',
+                   alertB: '目標確定しました',
+               ),
             ],
           ),
       ),
