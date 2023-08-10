@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 import '../constant/colors.dart';
+import '../view/home_screen.dart';
 import 'alert_dialog.dart';
 import 'main_button.dart';
 
@@ -23,13 +24,11 @@ class NumberScroll extends StatefulWidget {
     required this.upperText,
     required this.buttonText,
     required this.alertA,
-    required this.alertB,
   });
 
   final String upperText;
   final String buttonText;
   final String alertA;
-  final String alertB;
   Account myAccount = Authentication.myAccount!;
 
   @override
@@ -113,30 +112,7 @@ class _NumberScrollState extends State<NumberScroll> {
                       hour: _selecthour,
                       minute: _selectminute,
                       onTapped:(){
-                        showDialog<void>(
-                          context: context,
-                        builder: (_) {
-                            return AlertDialogComponent(
-                              title: widget.alertB,
-                              hour: _selecthour,
-                              minute: _selectminute,
-                                onTapped:(){
-                                  /*print('Firebase処理に入ります。');
-                                    WeeklyPlan newWeeklyPlan = WeeklyPlan(
-                                      accountId: widget.myAccount.id,
-                                      hour:_selecthour,
-                                      minute:_selectminute
-                                    );
-                                    var result = await WeeklyPlanFirestore.addWeeklyPlan(newWeeklyPlan);
-                                    if(result == true) {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenControl()));
-                                   }*/
-
-                                  //ホーム画面に送信する作業を書く
-
-                                    },
-                            );
-                        });
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
                       },
                     );
                   });

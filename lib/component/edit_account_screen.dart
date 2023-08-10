@@ -4,7 +4,7 @@ import 'package:reskill_x/constant/colors.dart';
 
 import '../model/account.dart';
 import '../utils/authentication.dart';
-import '../view/account_screens/account_screen.dart';
+// import '../view/account_screens/account_screen.dart';
 
 class EditAccountScreen extends StatefulWidget {
   const EditAccountScreen({super.key});
@@ -29,16 +29,16 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
               foregroundImage: NetworkImage(myAccount.imagePath),
               child: Icon(Icons.add),
             ),
-            MainButton(buttonColor: kPrime, buttonTitle: "アカウントスクリーンへ", onTapped: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AccountScreen()));
-            },
-              textStyle: TextStyle(
-                color: kWhite,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-              minWidth: 110,
-            )
+            // MainButton(buttonColor: kPrime, buttonTitle: "アカウントスクリーンへ", onTapped: (){
+            //   Navigator.push(context, MaterialPageRoute(builder: (context) => AccountScreen()));
+            // },
+            //   textStyle: TextStyle(
+            //     color: kWhite,
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: 16,
+            //   ),
+            //   minWidth: 110,
+            // )
           ],
         ),
       ),

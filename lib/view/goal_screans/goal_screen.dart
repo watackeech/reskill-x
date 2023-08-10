@@ -4,6 +4,7 @@ import 'package:reskill_x/component/main_button.dart';
 import 'package:reskill_x/component/number_scroll.dart';
 import 'package:reskill_x/constant/colors.dart';
 import 'package:reskill_x/model/weekly_plan.dart';
+import 'package:reskill_x/view/goal_screans/study_record_screen.dart';
 import 'package:reskill_x/view/screen_control.dart';
 
 import '../../model/account.dart';
@@ -12,6 +13,7 @@ import '../../utils/firestore/weekly_plan_firestore.dart';
 
 class GoalScreen extends StatefulWidget {
   const GoalScreen({super.key});
+  static const String route = '/goal/goal_screen';
 
   @override
   State<GoalScreen> createState() => _GoalScreenState();
@@ -40,7 +42,6 @@ class _GoalScreenState extends State<GoalScreen> {
                    upperText: '目標時間を設定してください',
                    buttonText: '目標確定',
                    alertA: '週間目標時間',
-                   alertB: '目標確定しました',
                ),
             ],
           ),

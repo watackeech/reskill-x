@@ -6,7 +6,6 @@ import 'package:reskill_x/constant/colors.dart';
 import 'package:reskill_x/model/account.dart';
 import 'package:reskill_x/utils/authentication.dart';
 import 'package:reskill_x/utils/firestore/user_firestore.dart';
-import 'package:reskill_x/view/account_screens/account_screen.dart';
 import 'package:reskill_x/view/login_signin_screens/signup_screen.dart';
 import 'package:reskill_x/view/screen_control.dart';
 
