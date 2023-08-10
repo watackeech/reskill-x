@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:reskill_x/component/avatar_image.dart';
+import 'package:reskill_x/view/goal_confirm_form.dart';
 
 import '../component/main_button.dart';
 import '../constant/colors.dart';
@@ -96,7 +97,9 @@ class MonthlyReportScreen extends StatelessWidget {
               MainButton(
                   buttonColor: kPrime,
                   buttonTitle: '振返り面談フォームへ',
-                  onTapped: () {},
+                  onTapped: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => GoalConfirmFormScreen()));
+                  },
                   textStyle: TextStyle(
                       color: kWhite, fontSize: 23, fontWeight: FontWeight.bold))
             ],

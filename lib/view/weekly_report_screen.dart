@@ -3,9 +3,11 @@ import 'package:reskill_x/component/circular_progress_bar.dart';
 import 'package:reskill_x/component/main_button.dart';
 
 import '../constant/colors.dart';
+import 'home_screen.dart';
+import 'monthly_report_screen.dart';
 
 class WeeklyReportScreen extends StatelessWidget {
-  const WeeklyReportScreen({super.key});
+  WeeklyReportScreen({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,26 @@ class WeeklyReportScreen extends StatelessWidget {
                   Text('獲得！', style: TextStyle(color: kBlack, fontSize: 24, fontWeight: FontWeight.bold),)
                 ],
               ),
-              MainButton(buttonColor: kPrime, buttonTitle: '月間レポートへ', onTapped: (){}, textStyle: TextStyle(color: kWhite, fontSize: 24, fontWeight: FontWeight.bold))
+              MainButton(
+                  buttonColor: kPrime,
+                  buttonTitle: '月間レポートへ',
+                  onTapped: (){
+                    // statusについて
+                    // 4：学習計画が設定されているかつ期日当日である状態
+                    // 5: 学習計画が設定されているかつ期日当日であるかつ4週目である状態
+                    int status = 4;
+                    switch(status){
+                      case 4:
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                        break;
+                      case 5:
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MonthlyReportScreen()));
+                        break;
+                    }
+
+                  },
+                  textStyle: TextStyle(color: kWhite, fontSize: 24, fontWeight: FontWeight.bold)
+              )
             ],
           ),
         ),

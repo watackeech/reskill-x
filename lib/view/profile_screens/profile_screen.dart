@@ -11,6 +11,7 @@ class IconText extends StatelessWidget {
   final String text;
   final IconData? icon;
 
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,6 +26,7 @@ class IconText extends StatelessWidget {
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+  static const String route = '/profile/profile_screen';
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();

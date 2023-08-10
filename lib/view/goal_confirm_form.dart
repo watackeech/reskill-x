@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reskill_x/constant/colors.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
+import 'home_screen.dart';
 
 void main() {
   runApp(GoalConfirmFormScreen());
@@ -155,6 +156,7 @@ class MyHomePage extends StatelessWidget {
                       inputController0.clear();
                       inputController1.clear();
                       inputController2.clear();
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
                     },
                     textStyle: TextStyle(color: Colors.white),
                   ),
