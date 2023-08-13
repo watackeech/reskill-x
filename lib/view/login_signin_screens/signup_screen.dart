@@ -111,7 +111,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         name: userNameController.text,
                         userId: emailController.text,
                         imagePath: imagePath,
-                        exp: 0 //新規登録したときの初期値は0
+                        exp: 0, //新規登録したときの初期値は0
+                        buddyId: 'wrQSlCkkZOQwGTNOn0PWYYu3E5R2' // ダミーデータ（古森紬）を一時的に挿入しておく
                       );
                       var _result = await UserFirestore.setUser(newAccount);
                       if(_result is Account){

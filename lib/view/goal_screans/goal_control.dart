@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/view/goal_screans/study_record_screen.dart';
+import '../monthly_report_screen.dart';
 import '../set_goal_form_screen.dart';
 import '../weekly_report_screen.dart';
 import 'goal_screen.dart';
@@ -26,7 +27,7 @@ class GoalControl extends StatelessWidget {
           // 4：学習計画が設定されているかつ期日当日である状態
           // 5: 学習計画が設定されているかつ期日当日であるかつ4週目である状態
           // 最終的にはテーブルに格納されている学習計画設定日と現在の日付から状態を判別する
-          int status = 3;
+          int status = 5;
 
           switch (status) {
             case 1:
@@ -42,7 +43,7 @@ class GoalControl extends StatelessWidget {
               builder = (BuildContext _) => WeeklyReportScreen();
               break;
             case 5:
-              builder = (BuildContext _) => WeeklyReportScreen();
+              builder = (BuildContext _) => MonthlyReportScreen();
               break;
             default:
               builder = (BuildContext _) => GoalControl();

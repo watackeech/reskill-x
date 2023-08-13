@@ -4,16 +4,20 @@ import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 import '../constant/colors.dart';
 
 class CircularProgressBar extends StatelessWidget {
-  const CircularProgressBar({super.key, required this.targetTime, required this.studyTime});
+  const CircularProgressBar({super.key, required this.targetHour, required this.targetMinute, required this.currentHour, required this.currentMinute});
   ///targetTime: 目標学習時間
   ///studyTime: 学習進捗時間
-  final int targetTime;
-  final int studyTime;
+  final int targetHour;
+  final int targetMinute;
+  final int currentHour;
+  final int currentMinute;
 
   @override
   Widget build(BuildContext context) {
 
     Size size = MediaQuery.of(context).size;
+    double targetTime = targetHour + (targetMinute / 60);
+    double currentTime = currentHour + (currentMinute/ 60);
     return Column(
       children: [
         Padding(
@@ -25,7 +29,7 @@ class CircularProgressBar extends StatelessWidget {
             backColor: Colors.lightBlueAccent,
             progressColors: [kPrime],
             mergeMode: true,
-            valueNotifier: ValueNotifier(studyTime /targetTime * 100),
+            valueNotifier: ValueNotifier(calcPercentage(targetTime, currentTime)),
             onGetText: (double value){
               return Text(
                   '${value.toInt()}%',
@@ -43,5 +47,11 @@ class CircularProgressBar extends StatelessWidget {
         ),
       ],
     );
+  }
+  double calcPercentage(double targetTime, double currentTime){
+    if(targetTime == 0) {
+      return 0;
+    }
+    return currentTime /targetTime * 100;
   }
 }
