@@ -90,7 +90,5 @@ class WeeklyPlanFirestore{
       print('学習進捗取得エラー');
       return false;
     }
-
   }
-
 }

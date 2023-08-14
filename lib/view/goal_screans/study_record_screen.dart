@@ -28,9 +28,9 @@ class _StudyRecordScreenState extends State<StudyRecordScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("進捗登録画面"),
-      ),
+      // appBar: AppBar(
+      //   title: const Text("進捗登録画面"),
+      // ),
       body: Center(
         child:
         Column(

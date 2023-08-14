@@ -33,9 +33,9 @@ class _GoalScreenState extends State<GoalScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("目標画面"),
-      ),
+      // appBar: AppBar(
+      //   title: const Text("目標画面"),
+      // ),
       body: SizedBox(
         height: size.height * 0.6,
         child: Column(
