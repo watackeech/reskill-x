@@ -26,8 +26,9 @@ class CircularProgressBar extends StatelessWidget {
             size: size.width * 0.3,
             backStrokeWidth: 30,
             progressStrokeWidth: 30,
-            backColor: Colors.lightBlueAccent,
+            backColor: kLightGrey,
             progressColors: [kPrime],
+            fullProgressColor: kPrime,
             mergeMode: true,
             valueNotifier: ValueNotifier(calcPercentage(targetTime, currentTime)),
             onGetText: (double value){
