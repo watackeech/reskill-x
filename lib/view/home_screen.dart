@@ -25,12 +25,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   //statusについて
+  // 0: デバッグ用、何も表示しない
   // 1：１週目かつ学習計画が設定されていない状態
   // 2：２～４週目かつ学習計画が設定されていない状態
   // 3：学習計画が設定されているかつ期日当日でない状態``
   // 4：学習計画が設定されているかつ期日当日である状態
   // 最終的にはテーブルに格納されている学習計画設定日と現在の日付から状態を判別する
-  int status = 0;
+  int status = 4;
 
   Account myAccount = Authentication.myAccount!;
   Account buddyAccount = Authentication.buddyAccount!;
@@ -38,12 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    status = 0;
+    status = 4;
     Future.delayed(Duration.zero, () => showPopupBasedOnStatus(context));
-    String alertMessage = 'test';
-    if (status == 1 || status == 2) {
-      alertMessage = '今週の目標時間を設定してください';
-    }
     return Scaffold(
       body: Center(
         child: Column(
@@ -137,10 +134,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
               ],
             ),
-            Text(
-              alertMessage,
-              style: TextStyle(color: kPrime),
-            ),
           ],
         ),
       ),
@@ -163,13 +156,10 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (status == 2) {
-      mainMessage = '1週目が始まりました。新たに週間学習計画を設定しましょう。';
+      mainMessage = '2週目が始まりました。新たに週間学習計画を設定しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          setState(() {
-            status = 0;
-          });
           return displayPopup(mainMessage, () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => GoalScreen()));

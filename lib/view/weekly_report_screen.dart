@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/component/circular_progress_bar.dart';
 import 'package:reskill_x/component/main_button.dart';
+import 'package:reskill_x/view/screen_control.dart';
 
 import '../constant/colors.dart';
 import '../model/account.dart';
 import '../utils/authentication.dart';
 import '../utils/firestore/weekly_plan_firestore.dart';
+import 'goal_screans/goal_screen.dart';
 import 'home_screen.dart';
 import 'monthly_report_screen.dart';
 
@@ -18,6 +20,23 @@ class WeeklyReportScreen extends StatefulWidget {
 
 class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
   Account myAccount = Authentication.myAccount!;
+
+  // statusについて
+  // 4：学習計画が設定されているかつ期日当日である状態
+  // 5: 学習計画が設定されているかつ期日当日であるかつ4週目である状態
+  int status = 5;
+
+  String buttonTitle(int status){
+    if(status == 4){
+      return '次週の週間目標設定へ';
+    }
+    else if(status == 5){
+      return '月間レポートへ';
+    }
+
+    return '';
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -117,15 +136,12 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
               ),
               MainButton(
                   buttonColor: kPrime,
-                  buttonTitle: '月間レポートへ',
+                  buttonTitle: buttonTitle(status),
                   onTapped: (){
-                    // statusについて
-                    // 4：学習計画が設定されているかつ期日当日である状態
-                    // 5: 学習計画が設定されているかつ期日当日であるかつ4週目である状態
-                    int status = 4;
+
                     switch(status){
                       case 4:
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => GoalScreen()));
                         break;
                       case 5:
                         Navigator.push(context, MaterialPageRoute(builder: (context) => MonthlyReportScreen()));
