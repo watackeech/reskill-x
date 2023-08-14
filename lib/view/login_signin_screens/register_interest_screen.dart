@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 import 'package:reskill_x/component/main_button.dart';
 
-import '../constant/colors.dart';
+import '../../constant/colors.dart';
+import '../screen_control.dart';
 
 
 
@@ -11,7 +12,7 @@ class RegisterInterestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> fieldOptions = ['Excel', 'PowerPoint', 'OneNote'];
+    List<String> fieldOptions = ['Excel', 'PowerPoint', 'OneNote', 'プレゼンスキル', 'データ分析', 'プログラミング', 'コミュニケーションスキル', 'プロジェクト管理', 'ビジネス英語', 'マーケティング戦略', 'デジタルマーケティング', 'クリエイティブ思考', 'リーダーシップスキル', '時間管理', 'チームビルディング', 'プロンプトエンジニアリング'];
     List<String>? interestedField = [];
 
     List<MultiSelectCard> generateCards(List<String> fieldOptions){
@@ -59,6 +60,7 @@ class RegisterInterestScreen extends StatelessWidget {
               if(interestedField != null){
                 for(int i = 0; i < interestedField!.length; i++){
                   print(interestedField![i]);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ScreenControl()));
                 }
               }else{
                 print('一つは選択しましょう!');

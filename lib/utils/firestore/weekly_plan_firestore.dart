@@ -38,9 +38,6 @@ class WeeklyPlanFirestore{
           .get();
       QueryDocumentSnapshot documentSnapshot = querySnapshot.docs[0];
       Map<String, dynamic> data = documentSnapshot.data() as Map<String, dynamic>;
-      print('ターゲット時間');
-      print(data['target_hour']);
-      print(data['current_minute']);
 
       WeeklyPlan latestWeeklyPlan = WeeklyPlan(
           accountId: (accountId),
@@ -82,8 +79,6 @@ class WeeklyPlanFirestore{
       querySnapshot.docs.forEach((doc) {
         Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         weeklyPlanList.add(data);
-        print('ターゲット時間');
-        print(data['target_hour']);
       });
       return weeklyPlanList;
     } on FirebaseException catch(e) {
