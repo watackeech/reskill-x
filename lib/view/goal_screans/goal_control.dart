@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/view/goal_screans/study_record_screen.dart';
+import '../monthly_report_screen.dart';
 import '../set_goal_form_screen.dart';
 import '../weekly_report_screen.dart';
 import 'goal_screen.dart';
@@ -42,7 +43,7 @@ class GoalControl extends StatelessWidget {
               builder = (BuildContext _) => WeeklyReportScreen();
               break;
             case 5:
-              builder = (BuildContext _) => WeeklyReportScreen();
+              builder = (BuildContext _) => MonthlyReportScreen();
               break;
             default:
               builder = (BuildContext _) => GoalControl();

@@ -6,6 +6,7 @@ class Authentication {
   static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   static User? currentFirebaseUser;
   static Account? myAccount;
+  static Account? buddyAccount;
 
   static Future<dynamic> signUp({required String email, required String password}) async{
     try{

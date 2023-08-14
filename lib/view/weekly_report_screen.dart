@@ -3,11 +3,21 @@ import 'package:reskill_x/component/circular_progress_bar.dart';
 import 'package:reskill_x/component/main_button.dart';
 
 import '../constant/colors.dart';
+import '../model/account.dart';
+import '../utils/authentication.dart';
+import '../utils/firestore/weekly_plan_firestore.dart';
 import 'home_screen.dart';
 import 'monthly_report_screen.dart';
 
-class WeeklyReportScreen extends StatelessWidget {
+class WeeklyReportScreen extends StatefulWidget {
   WeeklyReportScreen({super.key,});
+
+  @override
+  State<WeeklyReportScreen> createState() => _WeeklyReportScreenState();
+}
+
+class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
+  Account myAccount = Authentication.myAccount!;
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +32,70 @@ class WeeklyReportScreen extends StatelessWidget {
               Text('２人とも目標達成！！', style: TextStyle(color: kBlack, fontSize: 30, fontWeight: FontWeight.bold),),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Column(
                     children: [
-                      CircularProgressBar(targetTime: 11, studyTime: 6),
+                      FutureBuilder(
+                        future: WeeklyPlanFirestore.getWeeklyPlansFromIds(myAccount.id),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else if (snapshot.data.isNotEmpty) {
+                            List<Map<String, dynamic>> weeklyPlanList = snapshot.data;
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CircularProgressBar(
+                                  targetHour: weeklyPlanList[0]['target_hour'].round(),
+                                  targetMinute: weeklyPlanList[0]['target_minute'].round(),
+                                  currentHour: weeklyPlanList[0]['current_hour'].round(),
+                                  currentMinute: weeklyPlanList[0]['current_minute'].round()
+                              ),
+                            );
+                          } else {
+                            return CircularProgressBar(
+                                targetHour: 0,
+                                targetMinute: 0,
+                                currentHour: 0,
+                                currentMinute: 0
+                            );
+                          }
+                        },
+                      ),
                     ],
                   ),
                   SizedBox(width: 20,),
                   Column(
                     children: [
-                      CircularProgressBar(targetTime: 11, studyTime: 6),
+                      FutureBuilder(
+                        future: WeeklyPlanFirestore.getWeeklyPlansFromIds(myAccount.id),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return CircularProgressIndicator();
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else if (snapshot.data.isNotEmpty) {
+                            List<Map<String, dynamic>> weeklyPlanList = snapshot.data;
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CircularProgressBar(
+                                  targetHour: weeklyPlanList[0]['target_hour'].round(),
+                                  targetMinute: weeklyPlanList[0]['target_minute'].round(),
+                                  currentHour: weeklyPlanList[0]['current_hour'].round(),
+                                  currentMinute: weeklyPlanList[0]['current_minute'].round()
+                              ),
+                            );
+                          } else {
+                            return CircularProgressBar(
+                                targetHour: 0,
+                                targetMinute: 0,
+                                currentHour: 0,
+                                currentMinute: 0
+                            );
+                          }
+                        },
+                      ),
                     ],
                   ),
                 ],
@@ -67,7 +131,6 @@ class WeeklyReportScreen extends StatelessWidget {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => MonthlyReportScreen()));
                         break;
                     }
-
                   },
                   textStyle: TextStyle(color: kWhite, fontSize: 24, fontWeight: FontWeight.bold)
               )
