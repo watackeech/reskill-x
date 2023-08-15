@@ -8,6 +8,7 @@ import 'package:reskill_x/component/main_button.dart';
 import 'package:reskill_x/component/text_input_field.dart';
 import 'package:reskill_x/constant/colors.dart';
 import 'package:reskill_x/utils/authentication.dart';
+import 'package:reskill_x/view/login_signin_screens/register_interest_screen.dart';
 import 'package:reskill_x/view/screen_control.dart';
 
 import '../../model/account.dart';
@@ -116,8 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       );
                       var _result = await UserFirestore.setUser(newAccount);
                       if(_result is Account){
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('ユーザーが作成できました')));
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ScreenControl()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterInterestScreen()));
                       }
                     }
                   }

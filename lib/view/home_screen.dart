@@ -5,6 +5,9 @@ import 'package:reskill_x/component/due_date.dart';
 import 'package:reskill_x/component/main_button.dart';
 import 'package:reskill_x/utils/firestore/user_firestore.dart';
 import 'package:reskill_x/utils/firestore/weekly_plan_firestore.dart';
+import 'package:reskill_x/view/goal_screans/goal_screen.dart';
+import 'package:reskill_x/view/set_goal_form_screen.dart';
+import 'package:reskill_x/view/weekly_report_screen.dart';
 
 import '../component/alert_dialog.dart';
 import '../component/circular_progress_bar.dart';
@@ -22,315 +25,201 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   //statusについて
+  // 0: デバッグ用、何も表示しない
   // 1：１週目かつ学習計画が設定されていない状態
   // 2：２～４週目かつ学習計画が設定されていない状態
-  // 3：学習計画が設定されているかつ期日当日でない状態
+  // 3：学習計画が設定されているかつ期日当日でない状態``
   // 4：学習計画が設定されているかつ期日当日である状態
   // 最終的にはテーブルに格納されている学習計画設定日と現在の日付から状態を判別する
-  int status = 1;
-
+  int status = 4;
 
   Account myAccount = Authentication.myAccount!;
   Account buddyAccount = Authentication.buddyAccount!;
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   myAccount = Authentication.myAccount!;
-  //   buddyAccount = UserFirestore.getUser(myAccount.buddyId);
-  // }
 
-  // Future<void> _loadBuddyAccount() async {
-  //   final loadedBuddyAccount = await UserFirestore.getUser(myAccount.buddyId) as Account;
-  //   setState(() {
-  //     buddyAccount = loadedBuddyAccount;
-  //   }); // UIを更新
-  // }
 
   @override
   Widget build(BuildContext context) {
+    status = 4;
+    Future.delayed(Duration.zero, () => showPopupBasedOnStatus(context));
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            const Text("目標期日まで"),
+            const SizedBox(
+              height: 10,
+            ),
+            DueDate(),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: AvatarImage(
+                        userAvatarUrl: myAccount.imagePath,
+                        radius: 0.2,
+                        gradeColor: kBronze),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: AvatarImage(
+                        userAvatarUrl: buddyAccount.imagePath,
+                        radius: 0.2,
+                        gradeColor: kBronze),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                FutureBuilder(
+                    future:
+                        WeeklyPlanFirestore.getWeeklyPlansFromIds(myAccount.id),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.data.isNotEmpty) {
+                        List<Map<String, dynamic>> weeklyPlanList =
+                            snapshot.data;
+                        return CircularProgressBar(
+                            targetHour:
+                                weeklyPlanList[0]['target_hour'].round(),
+                            targetMinute:
+                                weeklyPlanList[0]['target_minute'].round(),
+                            currentHour:
+                                weeklyPlanList[0]['current_hour'].round(),
+                            currentMinute:
+                                weeklyPlanList[0]['current_minute'].round());
+                      } else {
+                        //まだ学習計画を立てていなかったとき
+                        return CircularProgressBar(
+                            targetHour: 0,
+                            targetMinute: 0,
+                            currentHour: 0,
+                            currentMinute: 0);
+                      }
+                    }),
+                FutureBuilder(
+                    future: WeeklyPlanFirestore.getWeeklyPlansFromIds(
+                        buddyAccount.id),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (snapshot.data.isNotEmpty) {
+                        List<Map<String, dynamic>> weeklyPlanList =
+                            snapshot.data;
+                        return CircularProgressBar(
+                            targetHour:
+                                weeklyPlanList[0]['target_hour'].round(),
+                            targetMinute:
+                                weeklyPlanList[0]['target_minute'].round(),
+                            currentHour:
+                                weeklyPlanList[0]['current_hour'].round(),
+                            currentMinute:
+                                weeklyPlanList[0]['current_minute'].round());
+                      } else {
+                        return CircularProgressBar(
+                            targetHour: 0,
+                            targetMinute: 0,
+                            currentHour: 0,
+                            currentMinute: 0);
+                      }
+                    }),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-    String alertMessage = 'test';
-    if(status == 1 || status == 2){
-        alertMessage = '今週の目標時間を設定してください';
+  showPopupBasedOnStatus(BuildContext context) async {
+    String mainMessage;
+    DateTime now = DateTime.now();
+    int currentMonth = now.month;
+    if (status == 1) {
+      mainMessage = '$currentMonth月になりました。新たに月間目標を設定しましょう。';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return displayPopup(mainMessage, () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SetGoalFormScreen()));
+          });
+        },
+      );
+    } else if (status == 2) {
+      mainMessage = '2週目が始まりました。新たに週間学習計画を設定しましょう。';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return displayPopup(mainMessage, () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => GoalScreen()));
+          });
+        },
+      );
+    } else if (status == 3) {
+      mainMessage = '週間学習計画の期日になりました。週間レポートを確認しましょう。';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return displayPopup(mainMessage, () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => WeeklyReportScreen()));
+          });
+        },
+      );
+    } else if (status == 4) {
+      mainMessage = '一か月お疲れさまでした。月間レポートを確認し、バディと振り返り面談をしましょう。';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return displayPopup(mainMessage, () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => WeeklyReportScreen()));
+          });
+        },
+      );
+    } else {
+      return null;
     }
-            return Scaffold(
-              body: Center(
-                child: Column(
-                  children: [
-                    const Text("目標期日まで"),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    DueDate(),
-                    Padding(
-                      padding: const EdgeInsets.only(top:20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: AvatarImage(userAvatarUrl: myAccount.imagePath, radius: 0.2, gradeColor: kBronze),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: AvatarImage(userAvatarUrl: buddyAccount.imagePath, radius: 0.2, gradeColor: kBronze),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        FutureBuilder(
-                            future: WeeklyPlanFirestore.getWeeklyPlansFromIds(myAccount.id),
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState == ConnectionState.waiting) {
-                                return CircularProgressIndicator();
-                              } else if (snapshot.hasError) {
-                                return Text('Error: ${snapshot.error}');
-                              } else if (snapshot.data.isNotEmpty) {
-                                List<Map<String, dynamic>> weeklyPlanList = snapshot.data;
-                                return CircularProgressBar(
-                                    targetHour: weeklyPlanList[0]['target_hour'].round(),
-                                    targetMinute: weeklyPlanList[0]['target_minute'].round(),
-                                    currentHour: weeklyPlanList[0]['current_hour'].round(),
-                                    currentMinute: weeklyPlanList[0]['current_minute'].round()
-                                );
-                              } else { //まだ学習計画を立てていなかったとき
-                                return CircularProgressBar(
-                                    targetHour: 0,
-                                    targetMinute: 0,
-                                    currentHour: 0,
-                                    currentMinute: 0
-                                );
-                              }
-                            }
-                        ),
-                        FutureBuilder(
-                            future: WeeklyPlanFirestore.getWeeklyPlansFromIds(buddyAccount.id),
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState == ConnectionState.waiting) {
-                                return CircularProgressIndicator();
-                              } else if (snapshot.hasError) {
-                                return Text('Error: ${snapshot.error}');
-                              } else if (snapshot.data.isNotEmpty) {
-                                List<Map<String, dynamic>> weeklyPlanList = snapshot.data;
-                                return CircularProgressBar(
-                                    targetHour: weeklyPlanList[0]['target_hour'].round(),
-                                    targetMinute: weeklyPlanList[0]['target_minute'].round(),
-                                    currentHour: weeklyPlanList[0]['current_hour'].round(),
-                                    currentMinute: weeklyPlanList[0]['current_minute'].round()
-                                );
-                              } else {
-                                return CircularProgressBar(
-                                    targetHour: 0,
-                                    targetMinute: 0,
-                                    currentHour: 0,
-                                    currentMinute: 0
-                                );
-                              }
-                            }
-                        ),
-                      ],
-                    ),
-                    Text(alertMessage,
-                      style: TextStyle(color: kPrime),
-                    ),
-                  ],
-                ),
-              ),);
+  }
 
-
-    // return FutureBuilder<dynamic>(
-    //     future: buddyAccount,
-    //     builder: (context, snapshot){
-    //       if (snapshot.connectionState == ConnectionState.waiting) {
-    //         return CircularProgressIndicator(); // データ取得中の表示
-    //       } else if (snapshot.hasError) {
-    //         return Text('Error: ${snapshot.error}');
-    //       } else if (snapshot.hasData && snapshot.data is Account) {
-    //         Account buddyData = snapshot.data as Account;
-    //         return Scaffold(
-    //           body: Center(
-    //             child: Column(
-    //               children: [
-    //                 const Text("目標期日まで"),
-    //                 const SizedBox(
-    //                   height: 10,
-    //                 ),
-    //                 DueDate(),
-    //                 Padding(
-    //                   padding: const EdgeInsets.only(top:20.0),
-    //                   child: Row(
-    //                     mainAxisAlignment: MainAxisAlignment.center,
-    //                     children: [
-    //                       Padding(
-    //                         padding: const EdgeInsets.all(8.0),
-    //                         child: AvatarImage(userAvatarUrl: myAccount.imagePath, radius: 0.2, gradeColor: kBronze),
-    //                       ),
-    //                       Padding(
-    //                         padding: const EdgeInsets.all(8.0),
-    //                         child: AvatarImage(userAvatarUrl: buddyData.imagePath, radius: 0.2, gradeColor: kBronze),
-    //                       ),
-    //                     ],
-    //                   ),
-    //                 ),
-    //                 Row(
-    //                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //                   children: [
-    //                     FutureBuilder(
-    //                         future: WeeklyPlanFirestore.getPostsFromIds(myAccount.id),
-    //                         builder: (context, snapshot) {
-    //                           if (snapshot.connectionState == ConnectionState.waiting) {
-    //                             return CircularProgressIndicator();
-    //                           } else if (snapshot.hasError) {
-    //                             return Text('Error: ${snapshot.error}');
-    //                           } else if (snapshot.data.isNotEmpty) {
-    //                             List<Map<String, dynamic>> weeklyPlanList = snapshot.data;
-    //                             return CircularProgressBar(
-    //                                 targetHour: weeklyPlanList[0]['target_hour'].round(),
-    //                                 targetMinute: weeklyPlanList[0]['target_minute'].round(),
-    //                                 currentHour: weeklyPlanList[0]['current_hour'].round(),
-    //                                 currentMinute: weeklyPlanList[0]['current_minute'].round()
-    //                             );
-    //                           } else { //まだ学習計画を立てていなかったとき
-    //                             return CircularProgressBar(
-    //                                 targetHour: 0,
-    //                                 targetMinute: 0,
-    //                                 currentHour: 0,
-    //                                 currentMinute: 0
-    //                             );
-    //                           }
-    //                         }
-    //                     ),
-    //                     FutureBuilder(
-    //                         future: WeeklyPlanFirestore.getPostsFromIds(buddyData.id),
-    //                         builder: (context, snapshot) {
-    //                           if (snapshot.connectionState == ConnectionState.waiting) {
-    //                             return CircularProgressIndicator();
-    //                           } else if (snapshot.hasError) {
-    //                             return Text('Error: ${snapshot.error}');
-    //                           } else if (snapshot.data.isNotEmpty) {
-    //                             List<Map<String, dynamic>> weeklyPlanList = snapshot.data;
-    //                             return CircularProgressBar(
-    //                                 targetHour: weeklyPlanList[0]['target_hour'].round(),
-    //                                 targetMinute: weeklyPlanList[0]['target_minute'].round(),
-    //                                 currentHour: weeklyPlanList[0]['current_hour'].round(),
-    //                                 currentMinute: weeklyPlanList[0]['current_minute'].round()
-    //                             );
-    //                           } else {
-    //                             return CircularProgressBar(
-    //                                 targetHour: 0,
-    //                                 targetMinute: 0,
-    //                                 currentHour: 0,
-    //                                 currentMinute: 0
-    //                             );
-    //                           }
-    //                         }
-    //                     ),
-    //                   ],
-    //                 ),
-    //                 Text(alertMessage,
-    //                   style: TextStyle(color: kPrime),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //         );
-    //       } else { // バディの情報取得に失敗した場合（バディ未設定など）
-    //         return Scaffold(
-    //           body: Center(
-    //             child: Column(
-    //               children: [
-    //                 const Text("目標期日まで"),
-    //                 const SizedBox(
-    //                   height: 10,
-    //                 ),
-    //                 DueDate(),
-    //                 Padding(
-    //                   padding: const EdgeInsets.only(top:20.0),
-    //                   child: Row(
-    //                     mainAxisAlignment: MainAxisAlignment.center,
-    //                     children: [
-    //                       Padding(
-    //                         padding: const EdgeInsets.all(8.0),
-    //                         child: AvatarImage(userAvatarUrl: myAccount.imagePath, radius: 0.2, gradeColor: kBronze),
-    //                       ),
-    //                       Padding(
-    //                         padding: const EdgeInsets.all(8.0),
-    //                         child: AvatarImage(userAvatarUrl: "https://www.martela.com/sites/default/files/styles/material_gallery_thumb/public/pim2022_files/MU43_light_grey_melamine_fullHD.jpeg", radius: 0.2, gradeColor: kBlack),
-    //                       ),
-    //                     ],
-    //                   ),
-    //                 ),
-    //                 Row(
-    //                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //                   children: [
-    //                     FutureBuilder(
-    //                         future: WeeklyPlanFirestore.getPostsFromIds(myAccount.id),
-    //                         builder: (context, snapshot) {
-    //                           if (snapshot.connectionState == ConnectionState.waiting) {
-    //                             return CircularProgressIndicator();
-    //                           } else if (snapshot.hasError) {
-    //                             return Text('Error: ${snapshot.error}');
-    //                           } else if (snapshot.data.isNotEmpty) {
-    //                             List<Map<String, dynamic>> weeklyPlanList = snapshot.data;
-    //                             return CircularProgressBar(
-    //                                 targetHour: weeklyPlanList[0]['target_hour'].round(),
-    //                                 targetMinute: weeklyPlanList[0]['target_minute'].round(),
-    //                                 currentHour: weeklyPlanList[0]['current_hour'].round(),
-    //                                 currentMinute: weeklyPlanList[0]['current_minute'].round()
-    //                             );
-    //                           } else { //まだ学習計画を立てていなかったとき
-    //                             return CircularProgressBar(
-    //                                 targetHour: 0,
-    //                                 targetMinute: 0,
-    //                                 currentHour: 0,
-    //                                 currentMinute: 0
-    //                             );
-    //                           }
-    //                         }
-    //                     ),
-    //                     FutureBuilder(
-    //                         future: WeeklyPlanFirestore.getPostsFromIds(myAccount.id),
-    //                         builder: (context, snapshot) {
-    //                           if (snapshot.connectionState == ConnectionState.waiting) {
-    //                             return CircularProgressIndicator();
-    //                           } else if (snapshot.hasError) {
-    //                             return Text('Error: ${snapshot.error}');
-    //                           } else if (snapshot.data.isNotEmpty) {
-    //                             List<Map<String, dynamic>> weeklyPlanList = snapshot.data;
-    //                             return CircularProgressBar(
-    //                                 targetHour: weeklyPlanList[0]['target_hour'].round(),
-    //                                 targetMinute: weeklyPlanList[0]['target_minute'].round(),
-    //                                 currentHour: weeklyPlanList[0]['current_hour'].round(),
-    //                                 currentMinute: weeklyPlanList[0]['current_minute'].round()
-    //                             );
-    //                           } else {
-    //                             return CircularProgressBar(
-    //                                 targetHour: 0,
-    //                                 targetMinute: 0,
-    //                                 currentHour: 0,
-    //                                 currentMinute: 0
-    //                             );
-    //                           }
-    //                         }
-    //                     ),
-    //                   ],
-    //                 ),
-    //                 Text(alertMessage,
-    //                   style: TextStyle(color: kPrime),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //         );
-    //       }
-    //     }
-    // );
-
-
-
+  Widget displayPopup(String mainMessage, VoidCallback onTapped) {
+    return AlertDialog(
+        content: Column(
+      mainAxisSize: MainAxisSize.min, // コンテンツのサイズを最小に設定
+      children: <Widget>[
+        Text(
+          mainMessage,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30,
+            color: kBlack,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 20), // 適宜スペースを追加
+        MainButton(
+          buttonColor: kPrime,
+          buttonTitle: '確認',
+          onTapped: onTapped,
+          textStyle: TextStyle(
+            color: kWhite,
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          minWidth: 110,
+        ),
+      ],
+    ));
   }
 }

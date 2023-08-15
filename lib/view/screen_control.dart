@@ -46,7 +46,7 @@ class _ScreenControlState extends State<ScreenControl> {
             items: [
               TabItem(icon: Icons.edit_note , title: 'メモ'),
               TabItem(icon: Icons.home, title: 'ホーム'),
-              TabItem(icon: Icons.flag, title: '目標・進捗'),
+              TabItem(icon: Icons.flag, title: '進捗登録'),
               TabItem(icon: Icons.person, title: 'プロフィール'),
             ],
             initialActiveIndex: selectedPage,
