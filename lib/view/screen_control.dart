@@ -34,7 +34,7 @@ class _ScreenControlState extends State<ScreenControl> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              PointIcon(imageUrl: myAccount.imagePath, gradeColor: kBronze,),
+              PointIcon(imageUrl: myAccount.imagePath, gradeColor: kBronze, exp: 100,),
             ],
           ),
         ),

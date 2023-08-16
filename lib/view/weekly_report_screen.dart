@@ -177,7 +177,7 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
                 ),
                 MainButton(
                     buttonColor: kPrime,
-                    buttonTitle: buttonTitle(status),
+                    buttonTitle: buttonTitle(pattern),
                     onTapped: () {
                       if (haveIAchieved && hasBuddyAchieved) {
                         UserFirestore.updateExp(
@@ -188,14 +188,14 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
                             _buddyWeeklyReport['target_minute'].round());
                         print('目標達成成功！！！');
                       }
-                      switch (status) {
-                        case 4:
+                      switch (pattern) {
+                        case 3:
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => GoalScreen()));
                           break;
-                        case 5:
+                        case 4:
                           Navigator.push(
                               context,
                               MaterialPageRoute(

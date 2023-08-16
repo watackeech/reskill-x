@@ -114,6 +114,7 @@ class _GoalScreenState extends State<GoalScreen> {
                                     );
                                     var result = await WeeklyPlanFirestore.addWeeklyPlan(newWeeklyPlan);
                                     if(result == true) {
+                                      done = 'yes';
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenControl()));
                                     }
                                   },

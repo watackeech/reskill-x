@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 Text(
-                  "リスキルX",
+                  "Re:X",
                   style: TextStyle(
                       color: kPrime, fontWeight: FontWeight.w900, fontSize: 40),
                   textAlign: TextAlign.center,

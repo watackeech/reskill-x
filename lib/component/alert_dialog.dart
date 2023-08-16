@@ -2,18 +2,14 @@ import 'package:flutter/material.dart';
 import '../constant/colors.dart';
 import 'main_button.dart';
 
-class AlertDialogComponent extends StatefulWidget {
+class AlertDialogComponent extends StatelessWidget {
   AlertDialogComponent({super.key, required this.title, required this.onTapped, required this.hour, required this.minute});
   final String title;
   final int hour;
   final int minute;
   final VoidCallback onTapped;
 
-  @override
-  State<AlertDialogComponent> createState() => _AlertDialogComponentState();
-}
 
-class _AlertDialogComponentState extends State<AlertDialogComponent> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -26,7 +22,7 @@ class _AlertDialogComponentState extends State<AlertDialogComponent> {
           style: TextStyle(fontSize: 20, color: kBlack, fontWeight: FontWeight.bold),),
 
       //選択された値をもってくるときのVer(　Text(selectedNumber時間')　)henkou
-      content:  Text( '${widget.hour}時間${widget.minute}分',
+      content:  Text( '${hour}時間${minute}分',
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 40, color: kBlack, fontWeight: FontWeight.bold),),
       actions: <Widget>[
@@ -63,7 +59,7 @@ class _AlertDialogComponentState extends State<AlertDialogComponent> {
                 buttonTitle: '確定',
                 onTapped: (){
                   Navigator.pop(context);
-                  widget.onTapped();
+                  onTapped();
                 },
                 textStyle: TextStyle(
                   color: kWhite,
