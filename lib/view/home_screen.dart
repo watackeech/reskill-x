@@ -16,6 +16,8 @@ import '../constant/colors.dart';
 import '../model/account.dart';
 import '../utils/authentication.dart';
 
+import '../main.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -24,14 +26,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //statusについて
-  // 0: デバッグ用、何も表示しない
-  // 1：１週目かつ学習計画が設定されていない状態
-  // 2：２～４週目かつ学習計画が設定されていない状態
-  // 3：学習計画が設定されているかつ期日当日でない状態``
-  // 4：学習計画が設定されているかつ期日当日である状態
-  // 最終的にはテーブルに格納されている学習計画設定日と現在の日付から状態を判別する
-  int status = 4;
 
   Account myAccount = Authentication.myAccount!;
   Account buddyAccount = Authentication.buddyAccount!;
@@ -39,7 +33,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    status = 4;
     Future.delayed(Duration.zero, () => showPopupBasedOnStatus(context));
     return Scaffold(
       body: Center(
@@ -144,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
     String mainMessage;
     DateTime now = DateTime.now();
     int currentMonth = now.month;
-    if (status == 1) {
+    if (pattern == 1&& done == 'no') {
       mainMessage = '$currentMonth月になりました。新たに月間目標を設定しましょう。';
       showDialog(
         context: context,
@@ -155,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       );
-    } else if (status == 2) {
+    } else if (pattern == 2&& done == 'no') {
       mainMessage = '2週目が始まりました。新たに週間学習計画を設定しましょう。';
       showDialog(
         context: context,
@@ -166,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       );
-    } else if (status == 3) {
+    } else if (pattern == 3&& done == 'no') {
       mainMessage = '週間学習計画の期日になりました。週間レポートを確認しましょう。';
       showDialog(
         context: context,
@@ -177,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       );
-    } else if (status == 4) {
+    } else if (pattern == 4&& done == 'no') {
       mainMessage = '一か月お疲れさまでした。月間レポートを確認し、バディと振り返り面談をしましょう。';
       showDialog(
         context: context,

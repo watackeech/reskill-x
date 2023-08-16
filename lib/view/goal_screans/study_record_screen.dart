@@ -102,7 +102,9 @@ class _StudyRecordScreenState extends State<StudyRecordScreen> {
                                 print(myAccount.name);
                                 var result = await WeeklyPlanFirestore.updateWeeklyPlan(myAccount.id, _selecthour, _selectminute);
                                 if(result == true) {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenControl()));
+                                  print('確認');
+                                  // Navigator.pop(context);
                                 }
                               },
                             );

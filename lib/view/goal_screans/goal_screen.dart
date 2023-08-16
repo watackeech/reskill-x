@@ -8,6 +8,7 @@ import 'package:reskill_x/view/goal_screans/study_record_screen.dart';
 import 'package:reskill_x/view/screen_control.dart';
 
 import '../../component/alert_dialog.dart';
+import '../../main.dart';
 import '../../model/account.dart';
 import '../../utils/authentication.dart';
 import '../../utils/firestore/weekly_plan_firestore.dart';
@@ -113,18 +114,58 @@ class _GoalScreenState extends State<GoalScreen> {
                                   );
                                   var result = await WeeklyPlanFirestore.addWeeklyPlan(newWeeklyPlan);
                                   if(result == true) {
+                                    done = 'yes';
+                                    // Navigator.pop(context);
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenControl()));
+                                    //Navigator.pop(context);
                                   }
                                 },
                               );
-                            });
-                      },
-                      textStyle: TextStyle(
-                        color: kWhite,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                      minWidth: 110,
+                    //           return AlertDialog(
+                    //             title: Text('test'),
+                    //             actions: <Widget>[
+                    //               Row(
+                    //                 children: [
+                    //                   MainButton(
+                    //                       buttonColor: kGrey,
+                    //                       buttonTitle: 'キャンセル',
+                    //                       onTapped: (){
+                    //                         Navigator.pop(context);
+                    //                       },
+                    //                     textStyle: TextStyle(
+                    //                       color: kWhite,
+                    //                       fontWeight: FontWeight.bold,
+                    //                       fontSize: 15,
+                    //                     ),
+                    //                     minWidth: 30,
+                    //
+                    //                   ),
+                    //
+                    //                   MainButton(
+                    //                     buttonColor: kGrey,
+                    //                     buttonTitle: '確定',
+                    //                     onTapped: (){
+                    //                       Navigator.of(context).pop();
+                    //                       done = 'yes';
+                    //                       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ScreenControl()), (Route<dynamic> route) => false,);
+                    //                     },
+                    //                     textStyle: TextStyle(
+                    //                       color: kWhite,
+                    //                       fontWeight: FontWeight.bold,
+                    //                       fontSize: 15,
+                    //                     ),
+                    //                     minWidth: 30,
+                    //                   ),
+                    //                 ],
+                    //               )
+                    //             ],
+                    // );
+                    });}, textStyle: TextStyle(
+                      color: kWhite,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+
                     ),
                   ],
                 ),
