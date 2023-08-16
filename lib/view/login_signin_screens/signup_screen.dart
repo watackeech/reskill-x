@@ -58,24 +58,28 @@ class _SignupScreenState extends State<SignupScreen> {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          child: Column(
-            children: [
-              Text(
+          child: Padding(
+            padding: const EdgeInsets.only(top:50.0, bottom:50.0),
+            child: Column(
+              children: [
+                Text(
                 "リスキルX",
-                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 40),
+                style: TextStyle(
+                color: kPrime, fontWeight: FontWeight.w900, fontSize: 40),
                 textAlign: TextAlign.center,
-              ),
-              SizedBox(height: size.height * 0.01),
-              Container(
-                height: size.height * 0.2,
-                child: Image(image: AssetImage("assets/images/giraffe.jpg")),
-              ),
+                ),
+               SizedBox(height: size.height * 0.01),
+               Container(
+                  height: size.height * 0.2,
+                  child: Image(image: AssetImage("assets/images/ロゴ.png")),
+                  ),
               SizedBox(
                 height: size.height * 0.01,
               ),
               const SizedBox(
-                height: 30,
+                height: 5,
               ),
+                const Text("↓アイコン画像を追加してください↓"),
               GestureDetector(
                 onTap: (){
                   print("photot selection");
@@ -87,6 +91,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   foregroundImage: image == null ? null : FileImage(image!),
                 ),
               ),
+
+
               TextInputField(
                   controller: userNameController,
                   icon: Icons.person_outlined,
@@ -148,7 +154,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ],
               )
-            ],
+             ],
+            ),
           ),
         ),
       ),

@@ -47,7 +47,19 @@ class RegisterInterestScreen extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+
           children: [
+            Text(
+              '興味分野を選択してください\nこの興味分野は\nバディのマッチングに使われます',
+              style: const TextStyle(
+                color: kBlack,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 50,),
             MultiSelectContainer(
                 itemsDecoration: MultiSelectDecorations(
                   decoration: BoxDecoration(
@@ -74,7 +86,7 @@ class RegisterInterestScreen extends StatelessWidget {
                 onChange: (allSelectedItems, selectedItem) {
                   interestedField = allSelectedItems.cast<String>();
                 }),
-            SizedBox(height: 30,),
+            SizedBox(height: 50,),
             MainButton(buttonColor: kPrime, buttonTitle: '興味分野を登録', onTapped:
             (){
               if(interestedField != null && interestedField!.length > 0){

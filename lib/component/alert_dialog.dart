@@ -17,9 +17,14 @@ class _AlertDialogComponentState extends State<AlertDialogComponent> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title:  Text(widget.title,
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 20, color: kBlack, fontWeight: FontWeight.bold),),
+
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0), // 角を丸めるための値を指定
+      ),
+      title:  Text(title,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, color: kBlack, fontWeight: FontWeight.bold),),
+
       //選択された値をもってくるときのVer(　Text(selectedNumber時間')　)henkou
       content:  Text( '${widget.hour}時間${widget.minute}分',
         textAlign: TextAlign.center,

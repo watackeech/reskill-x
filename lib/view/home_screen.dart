@@ -137,12 +137,14 @@ class _HomeScreenState extends State<HomeScreen> {
     String mainMessage;
     DateTime now = DateTime.now();
     int currentMonth = now.month;
+
     if (pattern == 1&& done == 'no') {
       mainMessage = '$currentMonth月になりました。新たに月間目標を設定しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return displayPopup(mainMessage, () {
+          return displayPopup(
+              mainMessage, () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => SetGoalFormScreen()));
           });
@@ -188,31 +190,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget displayPopup(String mainMessage, VoidCallback onTapped) {
     return AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0), // 角を丸めるための値を指定
+        ),
         content: Column(
-      mainAxisSize: MainAxisSize.min, // コンテンツのサイズを最小に設定
-      children: <Widget>[
-        Text(
-          mainMessage,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30,
-            color: kBlack,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 20), // 適宜スペースを追加
-        MainButton(
-          buttonColor: kPrime,
-          buttonTitle: '確認',
-          onTapped: onTapped,
-          textStyle: TextStyle(
-            color: kWhite,
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-          minWidth: 110,
-        ),
-      ],
-    ));
+          mainAxisSize: MainAxisSize.min, // コンテンツのサイズを最小に設定
+          children: <Widget>[
+
+            Text(
+              mainMessage,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                color: kBlack,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20), // 適宜スペースを追加
+            MainButton(
+              buttonColor: kPrime,
+              buttonTitle: '確認',
+              onTapped: onTapped,
+              textStyle: TextStyle(
+                color: kWhite,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+              minWidth: 110,
+            ),
+          ],
+       )
+    );
   }
 }
