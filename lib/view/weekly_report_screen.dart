@@ -5,6 +5,7 @@ import 'package:reskill_x/utils/firestore/user_firestore.dart';
 import 'package:reskill_x/view/screen_control.dart';
 
 import '../constant/colors.dart';
+import '../main.dart';
 import '../model/account.dart';
 import '../utils/authentication.dart';
 import '../utils/firestore/weekly_plan_firestore.dart';
@@ -31,15 +32,13 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
   bool hasBuddyAchieved = false;
   bool isDataLoaded = false;
 
-  // statusについて
-  // 4：学習計画が設定されているかつ期日当日である状態
-  // 5: 学習計画が設定されているかつ期日当日であるかつ4週目である状態
-  int status = 5;
 
-  String buttonTitle(int status) {
-    if (status == 4) {
+
+  String buttonTitle(int status){
+    if(status == 3){
       return '次週の週間目標設定へ';
-    } else if (status == 5) {
+    }
+    else if(status == 4){
       return '月間レポートへ';
     }
     return '';
