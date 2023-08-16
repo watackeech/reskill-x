@@ -23,6 +23,7 @@ class CircularProgressBar extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(15.0),
           child: SimpleCircularProgressBar(
+            animationDuration: 1,
             size: size.width * 0.3,
             backStrokeWidth: 30,
             progressStrokeWidth: 30,
