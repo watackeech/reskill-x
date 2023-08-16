@@ -8,6 +8,7 @@ import 'package:reskill_x/view/goal_screans/study_record_screen.dart';
 import 'package:reskill_x/view/screen_control.dart';
 
 import '../../component/alert_dialog.dart';
+import '../../main.dart';
 import '../../model/account.dart';
 import '../../utils/authentication.dart';
 import '../../utils/firestore/weekly_plan_firestore.dart';
@@ -58,7 +59,7 @@ class _GoalScreenState extends State<GoalScreen> {
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              // ロウを中央寄せにす
+                            
                               children: [
                                 NumberPicker(
                                     //時
@@ -131,6 +132,7 @@ class _GoalScreenState extends State<GoalScreen> {
                 )
               ],
             ),
+
           ),
         ),
       );
