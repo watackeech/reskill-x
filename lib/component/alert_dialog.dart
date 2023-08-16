@@ -12,6 +12,9 @@ class AlertDialogComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0), // 角を丸めるための値を指定
+      ),
       title:  Text(title,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 20, color: kBlack, fontWeight: FontWeight.bold),),

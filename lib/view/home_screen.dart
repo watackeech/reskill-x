@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // 3：学習計画が設定されているかつ期日当日でない状態``
   // 4：学習計画が設定されているかつ期日当日である状態
   // 最終的にはテーブルに格納されている学習計画設定日と現在の日付から状態を判別する
-  int status = 4;
+  int status = 2;
 
   Account myAccount = Authentication.myAccount!;
   Account buddyAccount = Authentication.buddyAccount!;
@@ -145,18 +145,19 @@ class _HomeScreenState extends State<HomeScreen> {
     DateTime now = DateTime.now();
     int currentMonth = now.month;
     if (status == 1) {
-      mainMessage = '$currentMonth月になりました。新たに月間目標を設定しましょう。';
+      mainMessage = '$currentMonth月になりました。\n新たに月間目標を設定しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
-          return displayPopup(mainMessage, () {
+          return displayPopup(
+              mainMessage, () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => SetGoalFormScreen()));
           });
         },
       );
     } else if (status == 2) {
-      mainMessage = '2週目が始まりました。新たに週間学習計画を設定しましょう。';
+      mainMessage = '2週目が始まりました。\n新たに週間学習計画を設定しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -167,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (status == 3) {
-      mainMessage = '週間学習計画の期日になりました。週間レポートを確認しましょう。';
+      mainMessage = '週間学習計画の期日になりました。\n週間レポートを確認しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -178,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (status == 4) {
-      mainMessage = '一か月お疲れさまでした。月間レポートを確認し、バディと振り返り面談をしましょう。';
+      mainMessage = '一か月お疲れさまでした。\n月間レポートを確認し、\nバディと振り返り面談をしましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -195,31 +196,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget displayPopup(String mainMessage, VoidCallback onTapped) {
     return AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0), // 角を丸めるための値を指定
+        ),
         content: Column(
-      mainAxisSize: MainAxisSize.min, // コンテンツのサイズを最小に設定
-      children: <Widget>[
-        Text(
-          mainMessage,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 30,
-            color: kBlack,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 20), // 適宜スペースを追加
-        MainButton(
-          buttonColor: kPrime,
-          buttonTitle: '確認',
-          onTapped: onTapped,
-          textStyle: TextStyle(
-            color: kWhite,
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-          minWidth: 110,
-        ),
-      ],
-    ));
+          mainAxisSize: MainAxisSize.min, // コンテンツのサイズを最小に設定
+          children: <Widget>[
+
+            Text(
+              mainMessage,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                color: kBlack,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20), // 適宜スペースを追加
+            MainButton(
+              buttonColor: kPrime,
+              buttonTitle: '確認',
+              onTapped: onTapped,
+              textStyle: TextStyle(
+                color: kWhite,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+              minWidth: 110,
+            ),
+          ],
+       )
+    );
   }
 }
