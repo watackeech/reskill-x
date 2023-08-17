@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/constant/colors.dart';
+import 'package:reskill_x/model/refrection_form.dart';
 import 'package:reskill_x/view/screen_control.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
@@ -31,12 +32,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController inputController1 = TextEditingController();
   final TextEditingController inputController2 = TextEditingController();
+  final TextEditingController inputController3 = TextEditingController(); // 追加
+  final TextEditingController inputController4 = TextEditingController(); // 追加
+  final TextEditingController inputController5 = TextEditingController();
   bool isIntroductionChecked = false;
   bool isInterestChecked = false;
   bool isQuestionChecked = false;
 
   @override
+
   Widget build(BuildContext context) {
+    inputController3.text = RefrectionForm.answer3;
+    inputController4.text = RefrectionForm.answer4;
+    inputController5.text = RefrectionForm.answer5;
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
@@ -110,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     TextInputField(
-                      controller: inputController1,
+                      controller: inputController3,
                       icon: Icons.book,
                       label: '勉強内容',
                     ),
@@ -123,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     TextInputField(
-                      controller: inputController2,
+                      controller: inputController4,
                       icon: Icons.school,
                       label: '勉強方法',
                     ),
@@ -136,9 +144,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       ) ,
                     ),
                     TextInputField(
-                      controller: inputController2,
-                      icon: Icons.timelapse,
-                      label: '勉強時間',
+                      controller: inputController5,
+                      icon: Icons.edit,
+                      label: '応用内容',
                     ),
                   ],
                 ),
@@ -149,12 +157,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 buttonColor: kPrime,
                 buttonTitle: '完了',
                 onTapped: () {
-                  String text1 = inputController1.text;
-                  String text2 = inputController2.text;
-                  print('入力フォーム1の値: $text1');
-                  print('入力フォーム2の値: $text2');
-                  inputController1.clear();
-                  inputController2.clear();
+                  inputController3.clear();
+                  inputController4.clear();
+                  inputController5.clear();
                   pattern = 1;
                   done = 'no';
                   Navigator.push(

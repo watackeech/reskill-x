@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/component/down_form_screen.dart';
 import 'package:reskill_x/component/text_input_field.dart';
+import 'package:reskill_x/model/refrection_form.dart';
 import 'package:reskill_x/model/set_goal_form.dart';
 import 'package:reskill_x/view/set_goal_form_screen.dart';
 
@@ -28,11 +29,16 @@ class UserData {
 }
 
 class RefrectionFormScreen1 extends StatelessWidget {
-  final TextEditingController inputController1 = TextEditingController();
-  final TextEditingController inputController2 = TextEditingController();
+
+  final TextEditingController inputController3 = TextEditingController(); // 追加
+  final TextEditingController inputController4 = TextEditingController(); // 追加
+  final TextEditingController inputController5 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    inputController3.text = SetGoalForm.answer3;
+    inputController4.text = SetGoalForm.answer4;
+    inputController5.text = SetGoalForm.answer5;
     return Scaffold(
       body: Center(
         child: Column(
@@ -90,7 +96,25 @@ class RefrectionFormScreen2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q2. 4週～8週で学習した\n学習内容の共有をしてください。*'
+            UpFormScreen(title:'Q2. 4週～8週で学習した\n学習内容の共有をしてください。*'),
+            SizedBox(height: 50),
+            Text(
+              '・Pythonで〇〇のデータ分析をした',
+              style: TextStyle(fontSize: 16),
+            ),
+            Text(
+              '・Udemyで〇〇の講義をみて〇〇が\nできるようになった',
+              style: TextStyle(fontSize: 16),
+
+            ),
+            Text(
+              '・〇〇という教材で〇〇を勉強し、\nノートにまとめた。など',
+              style: TextStyle(fontSize: 16),
+            ),
+            RichText(
+              text: TextSpan(
+                text: '',
+              ),
             ),
             SizedBox(height: 100),
             DownFormScreen(
@@ -117,7 +141,7 @@ class RefrectionFormScreen3 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q3. あなたは振り返り面談までの\n4週間何を勉強しましたか？*'),
+            UpFormScreen(title:'Q3. あなたは振り返り面談までの4週間\n何を勉強しますか？*'),
             SizedBox(height: 50),
             TextInputField(
               controller: inputController3,
@@ -128,7 +152,16 @@ class RefrectionFormScreen3 extends StatelessWidget {
             DownFormScreen(
               currentPage:3,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RefrectionFormScreen4()));
+                if (inputController3.text == null || inputController3.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  RefrectionForm.answer3 = inputController3.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => RefrectionFormScreen4()));
+                }
               },
             ),
           ],
@@ -161,7 +194,16 @@ class RefrectionFormScreen4 extends StatelessWidget {
             DownFormScreen(
               currentPage:4,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RefrectionFormScreen5()));
+                if (inputController4.text == null || inputController4.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  RefrectionForm.answer4 = inputController4.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => RefrectionFormScreen5()));
+                }
               },
             ),
             SizedBox(height: 16),
@@ -189,14 +231,23 @@ class RefrectionFormScreen5 extends StatelessWidget {
             SizedBox(height: 50),
             TextInputField(
               controller: inputController5,
-              icon: Icons.timelapse,
-              label: '勉強時間',
+              icon: Icons.edit,
+              label: '応用内容',
             ),
             SizedBox(height: 100),
             DownFormScreen(
               currentPage:5,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => FinalGoalFormCompleteScreen()));
+                if (inputController5.text == null || inputController5.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  RefrectionForm.answer5 = inputController5.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => FinalGoalFormCompleteScreen()));
+                }
               },
             ),
             SizedBox(height: 16),
