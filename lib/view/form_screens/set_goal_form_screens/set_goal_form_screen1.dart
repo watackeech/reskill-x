@@ -145,7 +145,16 @@ class SetGoalFormScreen3 extends StatelessWidget {
             DownFormScreen(
                 currentPage:3,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SetGoalFormScreen4()));
+                if (inputController3.text == null || inputController3.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  SetGoalForm.answer3 = inputController3.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SetGoalFormScreen4()));
+                }
               },
             ),
           ],
@@ -178,7 +187,16 @@ class SetGoalFormScreen4 extends StatelessWidget {
             DownFormScreen(
               currentPage:4,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SetGoalFormScreen5()));
+                if (inputController4.text == null || inputController4.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  SetGoalForm.answer4 = inputController4.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SetGoalFormScreen5()));
+                }
               },
             ),
             SizedBox(height: 16),
@@ -213,7 +231,16 @@ class SetGoalFormScreen5 extends StatelessWidget {
             DownFormScreen(
               currentPage:5,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => SetGoalFormCompleteScreen()));
+                if (inputController5.text == null || inputController5.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  SetGoalForm.answer5 = inputController5.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SetGoalFormCompleteScreen()));
+                }
               },
             ),
             SizedBox(height: 16),
