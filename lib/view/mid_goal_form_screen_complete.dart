@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         children: [
                           Text(
-                            'Q1. 以下のルールに同意してください！*\n・バディのことは否定しない\n・褒め合いを意識する\n・次どうするかをポジティブに考える',
+                            'Q1. 以下のルールに同意してください！*\n・ バディのことは否定しない\n・ 褒め合いを意識する\n・ 次どうするかをポジティブに考える',
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 16),
                           ),
@@ -127,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child:Text(
-                        'Q5. 中間報告までに勉強する予定の目標時間を\n宣言してください*',
+                        'Q5. 振り返り面談までに\n勉強する予定の目標時間を宣言してください*',
                         textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 16),
                       ) ,

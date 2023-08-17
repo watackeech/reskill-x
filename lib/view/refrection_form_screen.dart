@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         children: [
                           Text(
-                            'Q1. 以下のルールに同意してください！*\n・バディのことは否定しない\n・褒め合いを意識する\n・次どうするかをポジティブに考える',
+                            'Q1. 以下のルールに同意してください！*\n・ バディのことは否定しない\n・ 褒め合いを意識する\n・ 次どうするかをポジティブに考える',
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 16),
                           ),
