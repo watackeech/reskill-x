@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:reskill_x/component/avatar_image.dart';
 import 'package:reskill_x/component/due_date.dart';
 import 'package:reskill_x/component/main_button.dart';
+import 'package:reskill_x/component/memo_button.dart';
 import 'package:reskill_x/utils/firestore/user_firestore.dart';
 import 'package:reskill_x/utils/firestore/weekly_plan_firestore.dart';
 import 'package:reskill_x/view/goal_screans/goal_screen.dart';

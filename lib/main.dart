@@ -16,6 +16,7 @@ import 'package:reskill_x/view/screen_control.dart';
 // 最終的にはテーブルに格納されている学習計画設定日と現在の日付から状態を判別する
 int pattern = 0;
 String done = 'no';
+List<String> memos = [];
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
