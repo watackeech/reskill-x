@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:reskill_x/component/avatar_image.dart';
@@ -17,6 +19,7 @@ import '../model/account.dart';
 import '../utils/authentication.dart';
 
 import '../main.dart';
+import 'form_screens/set_goal_form_screens/set_goal_form_screen1.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,6 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Account buddyAccount = Authentication.buddyAccount!;
 
   int currentWeek(int pattern ){
+    print('pattern');
+    print(pattern);
     if(pattern == 0 || pattern == 1 || pattern == 3){
       return 1;
     }
@@ -176,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return displayPopup(
               mainMessage, () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SetGoalFormScreen()));
+                MaterialPageRoute(builder: (context) => SetGoalFormScreen1()));
           });
         },
       );
@@ -203,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (pattern == 4&& done == 'no') {
-      mainMessage = '一か月お疲れさまでした。月間レポートを確認し、バディと振り返り面談をしましょう。';
+      mainMessage = '一か月お疲れさまでした。月間レポートを確認し、バディと中間報告面談をしましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -213,7 +218,19 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
       );
-    } else {
+    } else if (pattern == 5 && done == 'no') {
+      mainMessage = '二か月お疲れさまでした。月間レポートを確認し、バディと振り返り面談をしましょう。';
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return displayPopup(mainMessage, () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => WeeklyReportScreen()));
+          });
+        },
+      );
+    }
+    else {
       return null;
     }
   }
@@ -255,10 +272,20 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 Widget ProgressIcons(int currentWeek){
+
+  Color getColorBasedOnCondition(int week){
+    if(week <= currentWeek){
+      return kPrime;
+    }
+    else{
+      return kLightGrey;
+    }
+  }
+
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      for(int i = 0; i < 4; i++)
+      for(int i = 1; i <= 4; i++)
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
@@ -266,11 +293,13 @@ Widget ProgressIcons(int currentWeek){
             height: 20,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: kPrime,
+                color: getColorBasedOnCondition(i),
             )
           ),
         ),
 
     ],
   );
+
+
 }

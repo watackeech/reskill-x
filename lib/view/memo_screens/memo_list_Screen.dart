@@ -98,27 +98,35 @@ class _MemoListScreenState extends State<MemoListScreen> {
                   done='no';
                   Navigator.pop(context);
                 },
-                child: Text('2~8週目の最初'),
+                child: Text('2~4,6~8週目の最初'),
               ),
               GestureDetector(
                 onTap: () {
-                  // 選択肢2が選ばれた場合の処理
+                  // 選択肢3が選ばれた場合の処理
                   pattern=3;
                   done='no';
                   Navigator.pop(context);
                 },
-                child: Text('1~7週目の最後'),
+                child: Text('1~3,5~7週目の最後'),
               ),
               GestureDetector(
                 onTap: () {
-                  // 選択肢2が選ばれた場合の処理
+                  // 選択肢4が選ばれた場合の処理
                   pattern=4;
+                  done='no';
+                  Navigator.pop(context);
+                },
+                child: Text('4週目の最後'),
+              ),
+              GestureDetector(
+                onTap: () {
+                  // 選択肢5が選ばれた場合の処理
+                  pattern=5;
                   done='no';
                   Navigator.pop(context);
                 },
                 child: Text('8週目の最後'),
               ),
-              // 他の選択肢も同様に追加
               ],
             ),
             ),

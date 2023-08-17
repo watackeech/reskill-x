@@ -31,7 +31,7 @@ class GoalControl extends StatelessWidget {
 
           switch (status) {
             case 1:
-              builder = (BuildContext _) => SetGoalFormScreen();
+              builder = (BuildContext _) => GoalScreen();
               break;
             case 2:
               builder = (BuildContext _) => GoalScreen();

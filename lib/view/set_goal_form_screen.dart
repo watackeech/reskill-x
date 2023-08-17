@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/constant/colors.dart';
 import 'package:reskill_x/view/home_screen.dart';
+import 'package:reskill_x/view/screen_control.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
 import '../model/set_goal_form.dart';
@@ -162,9 +163,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   inputController3.clear(); // 追加
                   inputController4.clear(); // 追加
                   inputController5.clear();
+
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    MaterialPageRoute(builder: (context) => GoalScreen()),
                   );
                 },
                 textStyle: TextStyle(

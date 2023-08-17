@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:reskill_x/component/avatar_image.dart';
+import 'package:reskill_x/view/form_screens/mid_report_form_screens/middle_goal_form_screen1.dart';
 import 'package:reskill_x/view/goal_confirm_form.dart';
 
 import '../component/circular_progress_bar.dart';
 import '../component/main_button.dart';
 import '../constant/colors.dart';
+import '../main.dart';
 import '../model/account.dart';
 import '../utils/authentication.dart';
 import '../utils/firestore/weekly_plan_firestore.dart';
+import 'form_screens/reflection_form_screens/refrection_form_screen1.dart';
 
 class MonthlyReportScreen extends StatefulWidget {
   const MonthlyReportScreen({super.key});
@@ -164,17 +167,30 @@ class _MonthlyReportScreenState extends State<MonthlyReportScreen> {
               SizedBox(
                 height: size.height * 0.03,
               ),
-              MainButton(
+              if(pattern == 4)MainButton(
                   buttonColor: kPrime,
-                  buttonTitle: '振返り面談フォームへ',
+                  buttonTitle: '中間報告面談フォームへ',
                   onTapped: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => GoalConfirmFormScreen()));
+                            builder: (context) => MiddleGoalFormScreen1()));
                   },
                   textStyle: TextStyle(
-                      color: kWhite, fontSize: 23, fontWeight: FontWeight.bold))
+                      color: kWhite, fontSize: 23, fontWeight: FontWeight.bold)
+              ),
+              if(pattern == 5)MainButton(
+                  buttonColor: kPrime,
+                  buttonTitle: '振り返り面談フォームへ',
+                  onTapped: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RefrectionFormScreen1()));
+                  },
+                  textStyle: TextStyle(
+                      color: kWhite, fontSize: 23, fontWeight: FontWeight.bold)
+              ),
             ],
           ),
         ),
