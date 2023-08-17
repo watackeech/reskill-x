@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/constant/colors.dart';
-import 'package:reskill_x/view/home_screen.dart';
+import 'package:reskill_x/model/middle_goal_form.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
-import '../model/set_goal_form.dart';
-import 'form_screens/set_goal_form_screens/set_goal_form_screen1.dart';
+// import 'form_screens/set_goal_form_screens/set_goal_form_screen1.dart';
 import 'goal_screans/goal_screen.dart';
 
 void main() {
-  runApp(SetGoalFormCompleteScreen());
+  runApp(MidGoalFormCompleteScreen());
 }
 
-class SetGoalFormCompleteScreen extends StatelessWidget {
+class MidGoalFormCompleteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,24 +28,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController inputController3 = TextEditingController(); // 追加
-  final TextEditingController inputController4 = TextEditingController(); // 追加
-  final TextEditingController inputController5 = TextEditingController();
-  bool isIntroductionChecked = true;
-  bool isInterestChecked = true;
-  bool isQuestionChecked = true;
+  final TextEditingController inputController1 = TextEditingController();
+  final TextEditingController inputController2 = TextEditingController();
+  bool isIntroductionChecked = false;
+  bool isInterestChecked = false;
+  bool isQuestionChecked = false;
 
   @override
   Widget build(BuildContext context) {
-    inputController3.text = SetGoalForm.answer3;
-    inputController4.text = SetGoalForm.answer4;
-    inputController5.text = SetGoalForm.answer5;
-
-
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
-         //height: MediaQuery.of(context).size.height * 0.7,
+          //height: MediaQuery.of(context).size.height * 0.7,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -58,9 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     SizedBox(height: 40,),
                     Text(
-                      '目標設定面談です。次の5つの議題をバディと\n共有し、回答してください。（所要時間15分)。',
+                      '中間報告面談の最終確認です。\n次の5つの議題をバディと確認できたら。\n完了ボタンを押してください！',
                       textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 20,),
                     Align(
@@ -68,15 +61,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         children: [
                           Text(
-                            'Q1. 自己紹介をしてください（名前、\n趣味、部署・課、簡単な仕事内容など）*',
+                            'Q1. 以下のルールに同意してください！*\n・バディのことは否定しない\n・褒め合いを意識する\n・次どうするかをポジティブに考える',
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 16),
                           ),
                           Checkbox(
-                            value: isIntroductionChecked,
+                            value: true,
                             onChanged: (bool? newValue) {
                               setState(() {
-                                isIntroductionChecked = newValue ?? true;
+                                isIntroductionChecked = newValue ?? false;
                               });
                             },
                           ),
@@ -90,15 +83,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         children: [
                           Text(
-                            'Q2. 興味分野を選んだ背景を共有\nしてください。*',
+                            'Q2. 4週間で学習した\n学習内容の共有をしてください。*',
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 16),
                           ),
                           Checkbox(
-                            value: isInterestChecked,
+                            value: true,
                             onChanged: (bool? newValue) {
                               setState(() {
-                                isInterestChecked = newValue ?? true;
+                                isInterestChecked = newValue ?? false;
                               });
                             },
                           ),
@@ -109,26 +102,26 @@ class _MyHomePageState extends State<MyHomePage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Q3. あなたは中間報告までの4週間何を勉強\nしますか？*',
+                        'Q3. あなたは振り返り面談までの\n4週間何を勉強しますか？*',
                         textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 16),
                       ),
                     ),
                     TextInputField(
-                      controller: inputController3,
+                      controller: inputController1,
                       icon: Icons.book,
                       label: '勉強内容',
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Q4. どうやって勉強しますか？（〇〇という参考書、Udemyの〇〇の講座など）*',
+                        'Q4. どうやって勉強しますか？\n（参考書、Udemyの講座など）*',
                         textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 16),
                       ),
                     ),
                     TextInputField(
-                      controller: inputController4,
+                      controller: inputController2,
                       icon: Icons.school,
                       label: '勉強方法',
                     ),
@@ -141,35 +134,33 @@ class _MyHomePageState extends State<MyHomePage> {
                       ) ,
                     ),
                     TextInputField(
-                      controller: inputController5,
+                      controller: inputController2,
                       icon: Icons.timelapse,
                       label: '勉強時間',
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 40,),
+              SizedBox(height: 20,),
+              // PageIndicator(currentPage: 6),
               MainButton(
                 buttonColor: kPrime,
                 buttonTitle: '完了',
                 onTapped: () {
-                  String text3 = inputController3.text; // 追加
-                  String text4 = inputController4.text; // 追加
-                  String text5 = inputController5.text;
-                  print('入力フォーム3の値: $text3'); // 追加
-                  print('入力フォーム4の値: $text4'); // 追加
-                  print('入力フォーム5の値: $text5');
-                  inputController3.clear(); // 追加
-                  inputController4.clear(); // 追加
-                  inputController5.clear();
+                  String text1 = inputController1.text;
+                  String text2 = inputController2.text;
+                  print('入力フォーム1の値: $text1');
+                  print('入力フォーム2の値: $text2');
+                  inputController1.clear();
+                  inputController2.clear();
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    MaterialPageRoute(builder: (context) => GoalScreen()),
                   );
                 },
                 textStyle: TextStyle(
                   color: Colors.white,
-                  fontSize: 22.0, // ここの値を調整して文字のサイズを変更
+                  fontSize: 20.0, // ここの値を調整して文字のサイズを変更
                 ),
               ),
             ],

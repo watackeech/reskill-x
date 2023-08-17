@@ -23,6 +23,7 @@ class CircularProgressBar extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(15.0),
           child: SimpleCircularProgressBar(
+            animationDuration: 1,
             size: size.width * 0.3,
             backStrokeWidth: 30,
             progressStrokeWidth: 30,
@@ -42,8 +43,9 @@ class CircularProgressBar extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text('${currentTime}h /', style: TextStyle(fontSize: 25, color: kPrime,)),
             Icon(Icons.flag, color:kPrime,),
-            Text('${targetTime}h', style: TextStyle(fontSize: 30, color: kPrime,)),
+            Text('${targetTime}h', style: TextStyle(fontSize: 25, color: kPrime,)),
           ],
         ),
       ],

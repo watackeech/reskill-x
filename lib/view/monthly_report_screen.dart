@@ -75,7 +75,8 @@ class _MonthlyReportScreenState extends State<MonthlyReportScreen> {
                           userAvatarUrl:
                               "https://firebasestorage.googleapis.com/v0/b/reskil-x.appspot.com/o/9gWEFH0XYYSPYcKwZmFcagEsMds1?alt=media&token=980ec35b-55b2-4b19-86ff-5494a5396bb8",
                           radius: 0.15,
-                          gradeColor: kBronze),
+                        exp: myAccount.exp,
+                        avatarTitle: 'あなた',),
                       Text(
                         '田中真司',
                         style: TextStyle(
@@ -91,7 +92,8 @@ class _MonthlyReportScreenState extends State<MonthlyReportScreen> {
                           userAvatarUrl:
                               "https://firebasestorage.googleapis.com/v0/b/reskil-x.appspot.com/o/JQKZ6GmCtGPEOs7P7rEjiyJ7PJh2?alt=media&token=e2709a35-7377-4a75-9088-06e74aa05254",
                           radius: 0.15,
-                          gradeColor: kBronze),
+                        exp: buddyAccount.exp,
+                        avatarTitle: 'バディ'),
                       Text(
                         '古森聡志',
                         style: TextStyle(

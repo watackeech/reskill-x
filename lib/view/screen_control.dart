@@ -1,6 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:reskill_x/view/goal_screans/goal_screen.dart';
+import 'package:reskill_x/view/goal_screans/study_record_screen.dart';
 import 'package:reskill_x/view/profile_screens/profile_control.dart';
 import 'package:reskill_x/view/profile_screens/profile_screen.dart';
 import '../component/point_icon.dart';
@@ -22,7 +23,7 @@ class _ScreenControlState extends State<ScreenControl> {
   Account myAccount = Authentication.myAccount!;
   int selectedPage = 1; // インスタンス変数として宣言
 
-  final List<Widget> _pageNo = [MemoListScreen(), HomeScreen(), GoalControl(), ProfileControl()];
+  final List<Widget> _pageNo = [MemoListScreen(), HomeScreen(), StudyRecordScreen(), ProfileControl()];
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _ScreenControlState extends State<ScreenControl> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              PointIcon(imageUrl: myAccount.imagePath, gradeColor: kBronze,),
+              PointIcon(imageUrl: myAccount.imagePath, gradeColor: kBronze, exp: myAccount.exp,),
             ],
           ),
         ),

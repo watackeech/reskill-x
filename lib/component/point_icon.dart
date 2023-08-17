@@ -5,9 +5,10 @@ import '../constant/colors.dart';
 import 'avatar_image.dart';
 
 class PointIcon extends StatelessWidget {
-  const PointIcon({super.key, required this.imageUrl, required this.gradeColor});
+  const PointIcon({super.key, required this.imageUrl, required this.gradeColor, required this.exp});
   final String imageUrl;
   final Color gradeColor;
+  final int exp;
 
 
   @override
@@ -27,7 +28,7 @@ class PointIcon extends StatelessWidget {
             children: [
               SizedBox(width: 10,),
               Icon(Icons.stars, color:Colors.yellow,),
-              Text('123exp', style:TextStyle(color:Colors.white, fontSize: 20)),
+              Text('${exp}exp', style:TextStyle(color:Colors.white, fontSize: 20)),
               // Container(
               //   width: 50,
               //   height: 50,
@@ -40,7 +41,7 @@ class PointIcon extends StatelessWidget {
             ],
           ),
         ),
-        AvatarImage(userAvatarUrl: imageUrl, gradeColor: gradeColor, radius: 0.065,),
+        AvatarImage(userAvatarUrl: imageUrl, exp: exp, radius: 0.065, avatarTitle: '',),
       ],
     );
   }

@@ -112,7 +112,7 @@ class _NumberScrollState extends State<NumberScroll> {
                       hour: _selecthour,
                       minute: _selectminute,
                       onTapped:(){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
                       },
                     );
                   });
