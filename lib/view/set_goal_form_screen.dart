@@ -35,7 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController inputController5 = TextEditingController();
   bool isIntroductionChecked = true;
   bool isInterestChecked = true;
-  bool isQuestionChecked = true;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     SizedBox(height: 40,),
                     Text(
-                      '目標設定面談です。次の5つの議題をバディと\n共有し、回答してください。（所要時間15分)。',
+                      '目標設定面談です。次の5つの議題をバディと\n共有し、回答してください。',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 16),
                     ),
