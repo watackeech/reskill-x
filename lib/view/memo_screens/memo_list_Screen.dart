@@ -14,8 +14,7 @@ class MemoListScreen extends StatefulWidget {
 
 class _MemoListScreenState extends State<MemoListScreen> {
 
-  // メモデータ
-  List<String> _memos = [];
+
   //テキストフィールドを制御
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -29,20 +28,20 @@ class _MemoListScreenState extends State<MemoListScreen> {
   Future<void> _loadMemos() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _memos = prefs.getStringList('memos') ?? [];
+      memos = prefs.getStringList('memos') ?? [];
     });
   }
 
   //メモ保存
   Future<void> _saveMemos() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('memos', _memos);
+    await prefs.setStringList('memos', memos);
   }
 
   //メモ追加
   void _addMemo(String memo) {
     setState(() {
-      _memos.add(memo);
+      memos.add(memo);
       _saveMemos();
     });
   }
@@ -50,9 +49,34 @@ class _MemoListScreenState extends State<MemoListScreen> {
   //メモ消去
   void _deleteMemo(int index) {
     setState(() {
-      _memos.removeAt(index);
+      memos.removeAt(index);
       _saveMemos();
     });
+  }
+
+  void showMemoDialog(List<String> memoList) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('メモの内容'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: memoList.map((memo) {
+              return Text(memo);
+            }).toList(),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('閉じる'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -136,10 +160,10 @@ class _MemoListScreenState extends State<MemoListScreen> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: _memos.length,
+              itemCount: memos.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(_memos[index]),
+                  title: Text(memos[index]),
                   trailing: IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
