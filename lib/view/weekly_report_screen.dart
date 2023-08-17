@@ -223,12 +223,12 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
         // crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                '120',
+                (_myWeeklyReport['target_hour'].round() * 60 + _myWeeklyReport['target_minute'].round()).toString(),
                 style: TextStyle(
                     color: kPrime,
                     fontSize: 30,
@@ -257,12 +257,12 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
         // crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children:  [
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                '120',
+                (_myWeeklyReport['target_hour'].round() * 60 + _myWeeklyReport['target_minute'].round()).toString(),
                 style: TextStyle(
                     color: kPrime,
                     fontSize: 30,
