@@ -177,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
     int currentMonth = now.month;
 
     if (pattern == 1&& done == 'no') {
-      mainMessage = '$currentMonth月になりました。新たに月間目標を設定しましょう。';
+      mainMessage = '$currentMonth月になりました。\n新たに月間目標を\n設定しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -189,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (pattern == 2&& done == 'no') {
-      mainMessage = '新しい1週間が始まりました。新たに週間学習計画を設定しましょう。';
+      mainMessage = '新しい1週間が始まりました。\n新たに週間学習計画を\n設定しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -200,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (pattern == 3&& done == 'no') {
-      mainMessage = '週間学習計画の期日になりました。週間レポートを確認しましょう。';
+      mainMessage = '週間学習計画の期日に\nなりました。\n週間レポートを\n確認しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -211,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (pattern == 4&& done == 'no') {
-      mainMessage = '一か月お疲れさまでした。月間レポートを確認し、バディと中間報告面談をしましょう。';
+      mainMessage = '一か月お疲れさまでした。\n月間レポートを確認し、\nバディと中間報告面談を\nしましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -222,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (pattern == 5 && done == 'no') {
-      mainMessage = '二か月お疲れさまでした。月間レポートを確認し、バディと振り返り面談をしましょう。';
+      mainMessage = '二か月お疲れさまでした。\n月間レポートを確認し、\nバディと振り返り面談を\nしましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -251,7 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainMessage,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 18,
                 color: kBlack,
                 fontWeight: FontWeight.bold,
               ),
