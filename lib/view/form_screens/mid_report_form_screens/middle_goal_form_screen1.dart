@@ -44,7 +44,7 @@ class MiddleGoalFormScreen1 extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  UpFormScreen(title: '中間報告面談\nQ1. 以下のルールに同意してください！*'),
+                  UpFormScreen(title: '中間報告面談\n\nQ1. 以下のルールに\n同意してください！*'),
                   SizedBox(height: 50),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,9 +92,10 @@ class MiddleGoalFormScreen2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q2. 4週間で学習した\n学習内容の共有をしてください。*'
+            SizedBox(height: 160),
+            UpFormScreen(title:'Q2. 1週～4週で学習した\n学習内容の共有をしてください。*'
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 170),
             DownFormScreen(
               currentPage:2,
               onTapped:(){
@@ -120,7 +121,7 @@ class MiddleGoalFormScreen3 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             UpFormScreen(title:'Q3. あなたは\n振り返り面談までの\n4週間何を勉強しますか？*'),
-            SizedBox(height: 50),
+            SizedBox(height: 100),
             TextInputField(
               controller: inputController3,
               icon: Icons.book,
@@ -162,13 +163,13 @@ class MiddleGoalFormScreen4 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（参考書、Udemyの講座など）*'),
-            SizedBox(height: 50),
+            SizedBox(height: 125),
             TextInputField(
               controller: inputController4,
               icon: Icons.school,
               label: '勉強方法',
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 125),
             DownFormScreen(
               currentPage:4,
               onTapped:(){
@@ -206,13 +207,13 @@ class MiddleGoalFormScreen5 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             UpFormScreen(title: 'Q5. 振り返り面談までに\n勉強する予定の目標時間を\n宣言してください*'),
-            SizedBox(height: 50),
+            SizedBox(height: 120),
             TextInputField(
               controller: inputController5,
               icon: Icons.timelapse,
               label: '勉強時間',
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 120),
             DownFormScreen(
               currentPage:5,
               onTapped:(){

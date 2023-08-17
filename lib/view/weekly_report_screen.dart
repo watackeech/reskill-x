@@ -142,39 +142,7 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
                     ),
                   ],
                 ),
-                Row(
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          '120',
-                          style: TextStyle(
-                              color: kPrime,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'exp',
-                          style: TextStyle(
-                              color: kPrime,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      '獲得！',
-                      style: TextStyle(
-                          color: kBlack,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
+                generateExpMessage(haveIAchieved, hasBuddyAchieved),
                 MainButton(
                     buttonColor: kPrime,
                     buttonTitle: buttonTitle(pattern),
@@ -245,6 +213,78 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
         '２人とも週間目標を\n達成できませんでした...',
         style:
             TextStyle(color: kBlack, fontSize: 30, fontWeight: FontWeight.bold),
+      );
+    }
+  }
+
+  Widget generateExpMessage(bool haveIAchieved, bool hasBuddyAchieved) {
+    if (haveIAchieved && hasBuddyAchieved) {
+      return Row(
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                '120',
+                style: TextStyle(
+                    color: kPrime,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'exp',
+                style: TextStyle(
+                    color: kPrime,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          Text(
+            '獲得！',
+            style: TextStyle(
+                color: kBlack,
+                fontSize: 24,
+                fontWeight: FontWeight.bold),
+          )
+        ],
+      );
+    } else {
+      return Row(
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                '120',
+                style: TextStyle(
+                    color: kPrime,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'exp',
+                style: TextStyle(
+                    color: kPrime,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          Text(
+            '獲得ならず...',
+            style: TextStyle(
+                color: kBlack,
+                fontSize: 24,
+                fontWeight: FontWeight.bold),
+          )
+        ],
       );
     }
   }

@@ -49,7 +49,7 @@ class RefrectionFormScreen1 extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  UpFormScreen(title: '振り返り面談\nQ1. 以下のルールに\n同意してください！*'),
+                  UpFormScreen(title: '振り返り面談\n\nQ1. 以下のルールに\n同意してください！*'),
                   SizedBox(height: 50),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +98,7 @@ class RefrectionFormScreen2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             UpFormScreen(title:'Q2. 4週～8週で学習した\n学習内容の共有をしてください。*'),
-            SizedBox(height: 50),
+            SizedBox(height: 100),
             Text(
               '・Pythonで〇〇のデータ分析をした',
               style: TextStyle(fontSize: 16),
@@ -117,7 +117,7 @@ class RefrectionFormScreen2 extends StatelessWidget {
                 text: '',
               ),
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 90),
             DownFormScreen(
               currentPage:2,
               onTapped:(){
@@ -143,13 +143,13 @@ class RefrectionFormScreen3 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             UpFormScreen(title:'Q3. あなたは振り返り面談までの4週間\n何を勉強しますか？*'),
-            SizedBox(height: 50),
+            SizedBox(height: 120),
             TextInputField(
               controller: inputController3,
               icon: Icons.book,
               label: '勉強内容',
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 120),
             DownFormScreen(
               currentPage:3,
               onTapped:(){
@@ -185,13 +185,13 @@ class RefrectionFormScreen4 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [UpFormScreen(title: 'Q4. どうやって勉強しましたか？\n（参考書、Udemyの講座など）*'),
-            SizedBox(height: 50),
+            SizedBox(height: 120),
             TextInputField(
               controller: inputController4,
               icon: Icons.school,
               label: '勉強方法',
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 120),
             DownFormScreen(
               currentPage:4,
               onTapped:(){
@@ -229,13 +229,13 @@ class RefrectionFormScreen5 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             UpFormScreen(title: 'Q5. この学びはどういうところで\nこれから活きそうですか？*'),
-            SizedBox(height: 50),
+            SizedBox(height: 120),
             TextInputField(
               controller: inputController5,
               icon: Icons.edit,
               label: '応用内容',
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 120),
             DownFormScreen(
               currentPage:5,
               onTapped:(){
