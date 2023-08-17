@@ -37,6 +37,7 @@ class _ScreenControlState extends State<ScreenControl> {
               PointIcon(imageUrl: myAccount.imagePath, gradeColor: kBronze, exp: myAccount.exp,),
             ],
           ),
+          automaticallyImplyLeading: false,
         ),
           body: Center(
             child: _pageNo[selectedPage],

@@ -38,7 +38,7 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
     if(status == 3){
       return '次週の週間目標設定へ';
     }
-    else if(status == 4){
+    else if(status == 4 || status == 5){
       return '月間レポートへ';
     }
     return '';
@@ -201,6 +201,12 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
                               MaterialPageRoute(
                                   builder: (context) => MonthlyReportScreen()));
                           break;
+                        case 5:
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MonthlyReportScreen()));
+                          break;
                       }
                     },
                     textStyle: TextStyle(
@@ -224,7 +230,7 @@ class _WeeklyReportScreenState extends State<WeeklyReportScreen> {
       );
     } else if (hasBuddyAchieved) {
       return Text(
-        'あなたが週間目標を\n達成できませんでした...',
+        'あなたは週間目標を\n達成できませんでした...',
         style:
             TextStyle(color: kBlack, fontSize: 30, fontWeight: FontWeight.bold),
       );

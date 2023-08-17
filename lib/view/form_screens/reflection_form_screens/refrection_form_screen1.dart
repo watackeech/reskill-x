@@ -48,20 +48,28 @@ class RefrectionFormScreen1 extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  UpFormScreen(title: 'Q1. 以下のルールに同意してください！*'),
-                  SizedBox(height: 60),
-                  Text(
-                    '・バディのことは否定しない',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    '・褒め合いを意識する',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    '・次どうするかをポジティブに考える',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  UpFormScreen(title: '振り返り面談\nQ1. 以下のルールに\n同意してください！*'),
+                  SizedBox(height: 50),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '・ バディのことは否定しない',
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        '・ 褒め合いを意識する',
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        '・ 次どうするかをポジティブに考える',
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -115,7 +123,7 @@ class RefrectionFormScreen2 extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => RefrectionFormScreen3()));
               },
             ),
-            SizedBox(height: 16), // Add some space between the button and the PageIndicator
+            SizedBox(height: 16), // Ad
           ],
         ),
       ),
@@ -175,7 +183,7 @@ class RefrectionFormScreen4 extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（〇〇という参考書、Udemyの〇〇\n講座など）*'),
+          children: [UpFormScreen(title: 'Q4. どうやって勉強しましたか？\n（参考書、Udemyの講座など）*'),
             SizedBox(height: 50),
             TextInputField(
               controller: inputController4,

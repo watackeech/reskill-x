@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/constant/colors.dart';
-import 'package:reskill_x/model/middle_goal_form.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
 // import 'form_screens/set_goal_form_screens/set_goal_form_screen1.dart';

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/constant/colors.dart';
 import 'package:reskill_x/model/refrection_form.dart';
+import 'package:reskill_x/view/screen_control.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
 // import 'form_screens/set_goal_form_screens/set_goal_form_screen1.dart';
+import '../main.dart';
 import 'goal_screans/goal_screen.dart';
 
 void main() {
@@ -69,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         children: [
                           Text(
-                            'Q1. 以下のルールに同意してください！*\n・バディのことは否定しない\n・褒め合いを意識する\n・次どうするかをポジティブに考える',
+                            'Q1. 以下のルールに同意してください！*\n・ バディのことは否定しない\n・ 褒め合いを意識する\n・ 次どうするかをポジティブに考える',
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 16),
                           ),
@@ -158,9 +160,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   inputController3.clear();
                   inputController4.clear();
                   inputController5.clear();
+                  pattern = 1;
+                  done = 'no';
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => GoalScreen()),
+                    MaterialPageRoute(builder: (context) => ScreenControl()),
                   );
                 },
                 textStyle: TextStyle(

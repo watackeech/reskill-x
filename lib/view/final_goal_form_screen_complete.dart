@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/constant/colors.dart';
-import 'package:reskill_x/model/middle_goal_form.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
 // import 'form_screens/set_goal_form_screens/set_goal_form_screen1.dart';
 import 'goal_screans/goal_screen.dart';
 
 void main() {
-  runApp(MidGoalFormCompleteScreen());
+  runApp(FinalGoalFormCompleteScreen());
 }
 
-class MidGoalFormCompleteScreen extends StatelessWidget {
+class FinalGoalFormCompleteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,9 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     SizedBox(height: 40,),
                     Text(
-                      '中間報告面談の最終確認です。\n次の5つの議題をバディと確認できたら。\n完了ボタンを押してください！',
+                      '振り返り面談の最終確認です。\n次の5つの議題をバディと確認できたら。\n完了ボタンを押してください！',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+
                     ),
                     SizedBox(height: 20,),
                     Align(
@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         children: [
                           Text(
-                            'Q2. 4週間で学習した\n学習内容の共有をしてください。*',
+                            'Q2. 4週～8週で学習した\n学習内容の共有をしてください。*',
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 16),
                           ),
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Q3. あなたは振り返り面談までの\n4週間何を勉強しますか？*',
+                        'Q3. あなたは振り返り面談までの\n4週間何を勉強しましたか？*',
                         textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 16),
                       ),
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Q4. どうやって勉強しますか？\n（参考書、Udemyの講座など）*',
+                        'Q4. どうやって勉強しましたか？\n（参考書、Udemyの講座など）*',
                         textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 16),
                       ),
@@ -128,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child:Text(
-                        'Q5. 振り返り面談までに\n勉強する予定の目標時間を宣言してください*',
+                        'Q5. この学びはどういうところで\nこれから活きそうですか？*',
                         textAlign: TextAlign.left,
                         style: TextStyle(fontSize: 16),
                       ) ,
