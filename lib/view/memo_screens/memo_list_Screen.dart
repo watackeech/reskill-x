@@ -73,44 +73,53 @@ class _MemoListScreenState extends State<MemoListScreen> {
             content: SingleChildScrollView(
             child: ListBody(
             children: <Widget>[
-            GestureDetector(
-            onTap: () {
-            // 選択肢1が選ばれた場合の処理
-            pattern=1;
-            done='no';
-            Navigator.pop(context);
-            },
-            child: Text('選択肢1'),
-            ),
-            GestureDetector(
-            onTap: () {
-            // 選択肢2が選ばれた場合の処理
-            pattern=2;
-            done='no';
-            Navigator.pop(context);
-            },
-            child: Text('選択肢2'),
-            ),
-            GestureDetector(
-            onTap: () {
-            // 選択肢2が選ばれた場合の処理
-            pattern=3;
-            done='no';
-            Navigator.pop(context);
-            },
-            child: Text('選択肢3'),
-            ),
-            GestureDetector(
-            onTap: () {
-            // 選択肢2が選ばれた場合の処理
-            pattern=4;
-            done='no';
-            Navigator.pop(context);
-            },
-            child: Text('選択肢4'),
-            ),
-            // 他の選択肢も同様に追加
-            ],
+              GestureDetector(
+                onTap: () {
+                  // 選択肢1が選ばれた場合の処理
+                  pattern=0;
+                  done='no';
+                  Navigator.pop(context);
+                },
+                child: Text('ポップアップなし'),
+              ),
+              GestureDetector(
+                onTap: () {
+                  // 選択肢1が選ばれた場合の処理
+                  pattern=1;
+                  done='no';
+                  Navigator.pop(context);
+                },
+                child: Text('１週目の最初'),
+              ),
+              GestureDetector(
+                onTap: () {
+                  // 選択肢2が選ばれた場合の処理
+                  pattern=2;
+                  done='no';
+                  Navigator.pop(context);
+                },
+                child: Text('2~8週目の最初'),
+              ),
+              GestureDetector(
+                onTap: () {
+                  // 選択肢2が選ばれた場合の処理
+                  pattern=3;
+                  done='no';
+                  Navigator.pop(context);
+                },
+                child: Text('1~7週目の最後'),
+              ),
+              GestureDetector(
+                onTap: () {
+                  // 選択肢2が選ばれた場合の処理
+                  pattern=4;
+                  done='no';
+                  Navigator.pop(context);
+                },
+                child: Text('8週目の最後'),
+              ),
+              // 他の選択肢も同様に追加
+              ],
             ),
             ),
             );

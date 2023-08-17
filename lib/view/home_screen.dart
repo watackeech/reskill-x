@@ -53,14 +53,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: AvatarImage(
                         userAvatarUrl: myAccount.imagePath,
                         radius: 0.2,
-                        gradeColor: kBronze),
+                        exp: myAccount.exp,
+                    avatarTitle: 'あなた',),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: AvatarImage(
                         userAvatarUrl: buddyAccount.imagePath,
                         radius: 0.2,
-                        gradeColor: kBronze),
+                      exp: buddyAccount.exp,
+                      avatarTitle: 'バディ',),
                   ),
                 ],
               ),
@@ -151,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       );
     } else if (pattern == 2&& done == 'no') {
-      mainMessage = '2週目が始まりました。新たに週間学習計画を設定しましょう。';
+      mainMessage = '新しい1週間が始まりました。新たに週間学習計画を設定しましょう。';
       showDialog(
         context: context,
         builder: (BuildContext context) {

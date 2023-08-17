@@ -41,7 +41,7 @@ class PointIcon extends StatelessWidget {
             ],
           ),
         ),
-        AvatarImage(userAvatarUrl: imageUrl, gradeColor: gradeColor, radius: 0.065,),
+        AvatarImage(userAvatarUrl: imageUrl, exp: exp, radius: 0.065, avatarTitle: '',),
       ],
     );
   }

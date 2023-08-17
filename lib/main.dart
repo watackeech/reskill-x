@@ -13,7 +13,7 @@ import 'package:reskill_x/view/screen_control.dart';
 // 3：学習計画が設定されているかつ1～3週目の期日である状態
 // 4：学習計画が設定されているかつ４週目の期日当日である状態
 // 最終的にはテーブルに格納されている学習計画設定日と現在の日付から状態を判別する
-int pattern = 1;
+int pattern = 0;
 String done = 'no';
 
 void main() async{

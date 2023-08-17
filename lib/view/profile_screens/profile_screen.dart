@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/component/main_button.dart';
 import 'package:reskill_x/constant/colors.dart';
+import '../../constant/GradeControl.dart';
 import '../../model/account.dart';
 import '../../utils/authentication.dart';
 import 'package:reskill_x/component/avatar_image.dart';
@@ -38,9 +39,14 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   Account myAccount = Authentication.myAccount!;
+  var myGradeControl = GradeControl();
 
   @override
   Widget build(BuildContext context) {
+
+    int nextPoint = myGradeControl.getNextGradePoint(myAccount.exp);
+    String grade =myGradeControl.getGradeFromExp(myAccount.exp);
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
@@ -52,7 +58,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               AvatarImage(userAvatarUrl: myAccount.imagePath,
                   radius: 0.3,
-                  gradeColor: kBronze),
+                  exp: myAccount.exp,
+              avatarTitle: '',),
               Column(
                 children: [
                   Text('${myAccount.name}', style: TextStyle(fontSize: 30),),
@@ -68,12 +75,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     IconText(icon: Icons.flag, text: '現在のリスキル経験値：', widget:
                       Text('${myAccount.exp}')
                       ,),
-                    IconText(icon: Icons.batch_prediction, text: 'グレード：', widget: Text(
-                      'ブロンズ'
-                    )),
-                    IconText(icon: Icons.stairs, text: '次のグレードまで：あと', widget: Text(
-                        '100exp'
-                    )),
+                    IconText(icon: Icons.batch_prediction, text: 'グレード：', widget: Text(grade),),
+                    IconText(icon: Icons.stairs, text: '次のグレードまで：あと', widget: Text(nextPoint.toString())),
                     IconText(icon: Icons.search, text: '興味関心：', widget:
                     FutureBuilder<List<Map<String, dynamic>>>(
                       future: UserFirestore.getInterestFields(myAccount.id),
