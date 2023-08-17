@@ -30,6 +30,20 @@ class _HomeScreenState extends State<HomeScreen> {
   Account myAccount = Authentication.myAccount!;
   Account buddyAccount = Authentication.buddyAccount!;
 
+  int currentWeek(int pattern ){
+    if(pattern == 0 || pattern == 1 || pattern == 3){
+      return 1;
+    }
+    else if(pattern == 2){
+      return 2;
+    }
+    else if(pattern == 4){
+      return 4;
+    }
+    else{
+      return 0;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,31 +52,45 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Column(
           children: [
-            const Text("目標期日まで"),
+            SizedBox(
+              height: 20,
+            ),
+            const Text("目標期日まで", style: TextStyle(fontSize: 15,)),
             const SizedBox(
               height: 10,
             ),
             DueDate(),
+            ProgressIcons(currentWeek(pattern)),
             Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: AvatarImage(
-                        userAvatarUrl: myAccount.imagePath,
-                        radius: 0.2,
-                        exp: myAccount.exp,
-                    avatarTitle: 'あなた',),
+                    child: Column(
+                      children: [
+                        AvatarImage(
+                            userAvatarUrl: myAccount.imagePath,
+                            radius: 0.2,
+                            exp: myAccount.exp,
+                        avatarTitle: 'あなた',),
+                        Text(myAccount.name, style: TextStyle(fontSize: 25,)),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: AvatarImage(
-                        userAvatarUrl: buddyAccount.imagePath,
-                        radius: 0.2,
-                      exp: buddyAccount.exp,
-                      avatarTitle: 'バディ',),
+                    child: Column(
+                      children: [
+                        AvatarImage(
+                            userAvatarUrl: buddyAccount.imagePath,
+                            radius: 0.2,
+                          exp: buddyAccount.exp,
+                          avatarTitle: 'バディ',),
+                        Text(buddyAccount.name, style: TextStyle(fontSize: 25,)),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -224,4 +252,25 @@ class _HomeScreenState extends State<HomeScreen> {
        )
     );
   }
+}
+
+Widget ProgressIcons(int currentWeek){
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      for(int i = 0; i < 4; i++)
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: 30,
+            height: 20,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: kPrime,
+            )
+          ),
+        ),
+
+    ],
+  );
 }
