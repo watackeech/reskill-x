@@ -3,6 +3,7 @@ import 'package:reskill_x/component/down_form_screen.dart';
 import 'package:reskill_x/component/text_input_field.dart';
 import 'package:reskill_x/model/refrection_form.dart';
 import 'package:reskill_x/model/set_goal_form.dart';
+import 'package:reskill_x/view/goal_confirm_form.dart';
 import 'package:reskill_x/view/set_goal_form_screen.dart';
 
 import '../../../component/up_form_screen.dart';

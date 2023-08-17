@@ -29,9 +29,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController inputController1 = TextEditingController();
   final TextEditingController inputController2 = TextEditingController();
-  bool isIntroductionChecked = false;
-  bool isInterestChecked = false;
-  bool isQuestionChecked = false;
+  bool isIntroductionChecked = true;
+  bool isInterestChecked = true;
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             style: TextStyle(fontSize: 16),
                           ),
                           Checkbox(
-                            value: true,
+                            value: isIntroductionChecked,
                             onChanged: (bool? newValue) {
                               setState(() {
-                                isIntroductionChecked = newValue ?? false;
+                                isIntroductionChecked = newValue ?? true;
                               });
                             },
                           ),
@@ -88,10 +87,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             style: TextStyle(fontSize: 16),
                           ),
                           Checkbox(
-                            value: true,
+                            value: isInterestChecked,
                             onChanged: (bool? newValue) {
                               setState(() {
-                                isInterestChecked = newValue ?? false;
+                                isInterestChecked = newValue ?? true;
                               });
                             },
                           ),

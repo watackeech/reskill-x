@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/component/down_form_screen.dart';
 import 'package:reskill_x/component/text_input_field.dart';
+import 'package:reskill_x/model/middle_goal_form.dart';
 import 'package:reskill_x/model/set_goal_form.dart';
+import 'package:reskill_x/view/mid_goal_form_screen_complete.dart';
 import 'package:reskill_x/view/set_goal_form_screen.dart';
 
 import '../../../component/up_form_screen.dart';
@@ -129,7 +131,16 @@ class MiddleGoalFormScreen3 extends StatelessWidget {
             DownFormScreen(
               currentPage:3,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MiddleGoalFormScreen4()));
+                if (inputController3.text == null || inputController3.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  MiddleGoalForm.answer3 = inputController3.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MiddleGoalFormScreen4()));
+                }
               },
             ),
           ],
@@ -162,7 +173,16 @@ class MiddleGoalFormScreen4 extends StatelessWidget {
             DownFormScreen(
               currentPage:4,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MiddleGoalFormScreen5()));
+                if (inputController4.text == null || inputController4.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  MiddleGoalForm.answer4 = inputController4.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MiddleGoalFormScreen5()));
+                }
               },
             ),
             SizedBox(height: 16),
@@ -197,7 +217,16 @@ class MiddleGoalFormScreen5 extends StatelessWidget {
             DownFormScreen(
               currentPage:5,
               onTapped:(){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MidGoalFormCompleteScreen()));
+                if (inputController5.text == null || inputController5.text.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('テキストが空です'),
+                    ),
+                  );
+                }else{
+                  MiddleGoalForm.answer5 = inputController5.text;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MidGoalFormCompleteScreen()));
+                }
               },
             ),
             SizedBox(height: 16),
