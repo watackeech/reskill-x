@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     SizedBox(height: 40,),
                     Text(
-                      'test振り返り面談の最終確認です。\n次の5つの議題をバディと確認できたら。\n完了ボタンを押してください！',
+                      '振り返り面談の最終確認です。\n次の5つの議題をバディと確認できたら。\n完了ボタンを押してください！',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
 
