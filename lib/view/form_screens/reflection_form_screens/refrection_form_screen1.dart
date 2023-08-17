@@ -7,7 +7,7 @@ import 'package:reskill_x/view/goal_confirm_form.dart';
 import 'package:reskill_x/view/set_goal_form_screen.dart';
 
 import '../../../component/up_form_screen.dart';
-import '../../refrection_form_screen.dart';
+import '../../final_goal_form_screen_complete.dart';
 
 void main() {
   runApp(MyApp());

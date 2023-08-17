@@ -14,7 +14,7 @@ import 'package:reskill_x/view/screen_control.dart';
 // 4：学習計画が設定されているかつ４週目の期日当日である状態
 // 5：学習計画が設定されているかつ8週目の期日当日である状態
 // 最終的にはテーブルに格納されている学習計画設定日と現在の日付から状態を判別する
-int pattern = 0;
+int pattern = 1;
 String done = 'no';
 List<String> memos = [];
 

@@ -3,6 +3,7 @@ import 'package:reskill_x/constant/colors.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
 // import 'form_screens/set_goal_form_screens/set_goal_form_screen1.dart';
+import '../model/refrection_form.dart';
 import 'goal_screans/goal_screen.dart';
 
 void main() {
@@ -27,13 +28,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController inputController1 = TextEditingController();
-  final TextEditingController inputController2 = TextEditingController();
+  final TextEditingController inputController3 = TextEditingController();
+  final TextEditingController inputController4 = TextEditingController();
+  final TextEditingController inputController5 = TextEditingController();
   bool isIntroductionChecked = true;
   bool isInterestChecked = true;
 
   @override
   Widget build(BuildContext context) {
+
+    inputController3.text = RefrectionForm.answer3;
+    inputController4.text = RefrectionForm.answer4;
+    inputController5.text = RefrectionForm.answer5;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
@@ -107,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     TextInputField(
-                      controller: inputController1,
+                      controller: inputController3,
                       icon: Icons.book,
                       label: '勉強内容',
                     ),
@@ -120,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     TextInputField(
-                      controller: inputController2,
+                      controller: inputController4,
                       icon: Icons.school,
                       label: '勉強方法',
                     ),
@@ -133,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ) ,
                     ),
                     TextInputField(
-                      controller: inputController2,
+                      controller: inputController5,
                       icon: Icons.timelapse,
                       label: '勉強時間',
                     ),
@@ -146,16 +153,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 buttonColor: kPrime,
                 buttonTitle: '完了',
                 onTapped: () {
-                  String text1 = inputController1.text;
-                  String text2 = inputController2.text;
-                  print('入力フォーム1の値: $text1');
-                  print('入力フォーム2の値: $text2');
-                  inputController1.clear();
-                  inputController2.clear();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => GoalScreen()),
-                  );
+
+                  if (isIntroductionChecked == false || isInterestChecked == false ||
+                      inputController3.text == null || inputController3.text.isEmpty ||
+                      inputController4.text == null || inputController4.text.isEmpty ||
+                      inputController5.text == null || inputController5.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('入力されていない項目があります'),
+                      ),
+                    );
+                  }else{
+                    // RefrectionForm.answer3 = inputController3.text;
+                    // RefrectionForm.answer4 = inputController4.text;
+                    // RefrectionForm.answer5 = inputController5.text;
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => GoalScreen()));
+                  }
                 },
                 textStyle: TextStyle(
                   color: Colors.white,

@@ -7,7 +7,7 @@ import 'package:reskill_x/view/mid_goal_form_screen_complete.dart';
 import 'package:reskill_x/view/set_goal_form_screen.dart';
 
 import '../../../component/up_form_screen.dart';
-import '../../middle_goal_form_screen.dart';
+//import '../../middle_goal_form_screen.dart';
 
 void main() {
   runApp(MyApp());

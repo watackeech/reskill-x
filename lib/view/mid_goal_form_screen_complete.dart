@@ -151,13 +151,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 buttonColor: kPrime,
                 buttonTitle: '完了',
                 onTapped: () {
-                  inputController3.clear();
-                  inputController4.clear();
-                  inputController5.clear();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => GoalScreen()),
-                  );
+                  if (isIntroductionChecked == false || isInterestChecked == false ||
+                  inputController3.text == null || inputController3.text.isEmpty ||
+                  inputController4.text == null || inputController4.text.isEmpty ||
+                  inputController5.text == null || inputController5.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('入力されていない項目があります'),
+                      ),
+                    );
+                  }else{
+                    MiddleGoalForm.answer3 = inputController3.text;
+                    MiddleGoalForm.answer4 = inputController4.text;
+                    MiddleGoalForm.answer5 = inputController5.text;
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => GoalScreen()));
+                  }
                 },
                 textStyle: TextStyle(
                   color: Colors.white,

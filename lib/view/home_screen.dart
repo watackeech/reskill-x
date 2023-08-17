@@ -51,9 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration.zero, () => showPopupBasedOnStatus(context));
+
     return Scaffold(
       body: Center(
         child: Column(
