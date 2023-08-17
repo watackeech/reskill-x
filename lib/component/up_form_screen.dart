@@ -8,7 +8,8 @@ class UpFormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Text(
       title,
-      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
+      textAlign: TextAlign.center,
     );
   }
 }

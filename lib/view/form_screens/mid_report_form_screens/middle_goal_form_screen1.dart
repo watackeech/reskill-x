@@ -42,24 +42,28 @@ class MiddleGoalFormScreen1 extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  UpFormScreen(title: 'Q1. 自己紹介をしてください*'),
-                  SizedBox(height: 20),
-                  Text(
-                    '名前: Your Name',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    '趣味: Your Hobby',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    '部署・課: Your Department',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    '簡単な仕事内容: Brief Job Description',
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  UpFormScreen(title: '中間報告面談\nQ1. 以下のルールに\n同意してください！*'),
+                  SizedBox(height: 50),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '・ バディのことは否定しない',
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        '・ 褒め合いを意識する',
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        '・ 次どうするかをポジティブに考える',
+                        style: TextStyle(fontSize: 16),
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -86,29 +90,7 @@ class MiddleGoalFormScreen2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q2. 興味分野を選んだ背景を\n共有してください。*'),
-            SizedBox(height: 50),
-            Text('あなたの興味分野：', style: TextStyle(fontSize: 16)),
-            RichText(
-              text: TextSpan(
-                text: 'データ分析、',
-                style: TextStyle(fontSize: 16, color: Colors.purple),
-                children: <TextSpan>[
-                  TextSpan(text: 'Excel', style: TextStyle(fontSize: 16, color: Colors.black)),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Text('バディの興味分野：', style: TextStyle(fontSize: 16)),
-            RichText(
-              text: TextSpan(
-                text: 'データ分析、',
-                style: TextStyle(fontSize: 16, color: Colors.purple),
-                children: <TextSpan>[
-                  TextSpan(text: 'Powerpoint、', style: TextStyle(fontSize: 16, color: Colors.black)),
-                  TextSpan(text: 'word', style: TextStyle(fontSize: 16, color: Colors.black)),
-                ],
-              ),
+            UpFormScreen(title:'Q2. 4週間で学習した\n学習内容の共有をしてください。*'
             ),
             SizedBox(height: 100),
             DownFormScreen(
@@ -135,7 +117,7 @@ class MiddleGoalFormScreen3 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q3. あなたは中間報告までの4週間\n何を勉強しますか？*'),
+            UpFormScreen(title:'Q3. あなたは\n振り返り面談までの\n4週間何を勉強しますか？*'),
             SizedBox(height: 50),
             TextInputField(
               controller: inputController3,
@@ -168,7 +150,7 @@ class MiddleGoalFormScreen4 extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（〇〇という参考書、Udemyの〇〇\n講座など）*'),
+          children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（参考書、Udemyの講座など）*'),
             SizedBox(height: 50),
             TextInputField(
               controller: inputController4,
@@ -203,7 +185,7 @@ class MiddleGoalFormScreen5 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title: 'Q5. 中間報告までに勉強する予定の\n目標時間宣言してください'),
+            UpFormScreen(title: 'Q5. 振り返り面談までに\n勉強する予定の目標時間を\n宣言してください*'),
             SizedBox(height: 50),
             TextInputField(
               controller: inputController5,

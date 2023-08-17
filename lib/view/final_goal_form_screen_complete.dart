@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reskill_x/constant/colors.dart';
-import 'package:reskill_x/view/screen_control.dart';
 import '../component/main_button.dart';
 import '../component/text_input_field.dart';
 // import 'form_screens/set_goal_form_screens/set_goal_form_screen1.dart';
-import '../main.dart';
 import 'goal_screans/goal_screen.dart';
 
 void main() {
@@ -52,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     SizedBox(height: 40,),
                     Text(
-                      'test振り返り面談の最終確認です。\n次の5つの議題をバディと確認できたら。\n完了ボタンを押してください！',
+                      '振り返り面談の最終確認です。\n次の5つの議題をバディと確認できたら。\n完了ボタンを押してください！',
                       textAlign: TextAlign.left,
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
 
@@ -155,11 +153,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   print('入力フォーム2の値: $text2');
                   inputController1.clear();
                   inputController2.clear();
-                  pattern = 1;
-                  done = 'no';
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ScreenControl()),
+                    MaterialPageRoute(builder: (context) => GoalScreen()),
                   );
                 },
                 textStyle: TextStyle(
