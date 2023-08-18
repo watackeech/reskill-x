@@ -49,7 +49,7 @@ class RefrectionFormScreen1 extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  UpFormScreen(title: '振り返り面談\n\nQ1. 以下のルールに\n同意してください！*'),
+                  UpFormScreen(title: '振り返り面談\n\nQ1. 以下のルールに同意して\nください！'),
                   SizedBox(height: 50),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,7 +97,7 @@ class RefrectionFormScreen2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q2. 4週～8週で学習した\n学習内容の共有をしてください。*'),
+            UpFormScreen(title:'Q2. 4週～8週で学習した学習内容\nの共有をしてください。'),
             SizedBox(height: 100),
             Text(
               '・Pythonで〇〇のデータ分析をした',
@@ -142,7 +142,7 @@ class RefrectionFormScreen3 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q3. あなたは振り返り面談までの4週間\n何を勉強しますか？*'),
+            UpFormScreen(title:'Q3. あなたは振り返り面談\nからの4週間何を勉強しましたか？'),
             SizedBox(height: 120),
             TextInputField(
               controller: inputController3,
@@ -184,7 +184,7 @@ class RefrectionFormScreen4 extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [UpFormScreen(title: 'Q4. どうやって勉強しましたか？\n（参考書、Udemyの講座など）*'),
+          children: [UpFormScreen(title: 'Q4. どうやって勉強しましたか？\n（参考書、Udemyの講座など）'),
             SizedBox(height: 120),
             TextInputField(
               controller: inputController4,
@@ -228,7 +228,7 @@ class RefrectionFormScreen5 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title: 'Q5. この学びはどういうところで\nこれから活きそうですか？*'),
+            UpFormScreen(title: 'Q5. この学びはどういうところで\nこれから活きそうですか？'),
             SizedBox(height: 120),
             TextInputField(
               controller: inputController5,

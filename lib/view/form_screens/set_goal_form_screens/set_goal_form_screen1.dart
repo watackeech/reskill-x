@@ -41,22 +41,22 @@ class SetGoalFormScreen1 extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  UpFormScreen(title: 'Q1. 自己紹介をしてください*'),
+                  UpFormScreen(title: 'Q1. 自己紹介をしてください'),
                   SizedBox(height: 20),
                   Text(
-                    '名前: Your Name',
+                    '名前:',
                     style: TextStyle(fontSize: 16),
                   ),
                   Text(
-                    '趣味: Your Hobby',
+                    '趣味:',
                     style: TextStyle(fontSize: 16),
                   ),
                   Text(
-                    '部署・課: Your Department',
+                    '部署・課:',
                     style: TextStyle(fontSize: 16),
                   ),
                   Text(
-                    '簡単な仕事内容: Brief Job Description',
+                    '簡単な仕事内容:',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -85,7 +85,7 @@ class SetGoalFormScreen2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          UpFormScreen(title:'Q2. 興味分野を選んだ背景を\n共有してください。*'),
+            UpFormScreen(title:'Q2. 興味分野を選んだ背景を\n共有してください。'),
             SizedBox(height: 50),
             Text('あなたの興味分野：', style: TextStyle(fontSize: 16)),
             RichText(
@@ -134,7 +134,7 @@ class SetGoalFormScreen3 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q3. あなたは中間報告までの4週間\n何を勉強しますか？*'),
+            UpFormScreen(title:'Q3. あなたは中間報告までの4週間\n何を勉強しますか？'),
             SizedBox(height: 50),
             TextInputField(
               controller: inputController3,
@@ -143,7 +143,7 @@ class SetGoalFormScreen3 extends StatelessWidget {
             ),
             SizedBox(height: 100),
             DownFormScreen(
-                currentPage:3,
+              currentPage:3,
               onTapped:(){
                 if (inputController3.text == null || inputController3.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -176,14 +176,14 @@ class SetGoalFormScreen4 extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（〇〇という参考書、Udemyの〇〇\n講座など）*'),
+          children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（〇〇という参考書、Udemyの〇〇\n講座など）'),
             SizedBox(height: 50),
             TextInputField(
               controller: inputController4,
               icon: Icons.school,
               label: '勉強方法',
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 110),
             DownFormScreen(
               currentPage:4,
               onTapped:(){
@@ -220,14 +220,14 @@ class SetGoalFormScreen5 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-        UpFormScreen(title: 'Q5. 中間報告までに勉強する予定の\n目標時間宣言してください'),
+            UpFormScreen(title: 'Q5. 中間報告までに勉強する予定の\n目標時間宣言してください'),
             SizedBox(height: 50),
             TextInputField(
               controller: inputController5,
               icon: Icons.timelapse,
               label: '勉強時間',
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 120),
             DownFormScreen(
               currentPage:5,
               onTapped:(){

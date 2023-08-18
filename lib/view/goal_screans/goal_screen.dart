@@ -46,7 +46,7 @@ class _GoalScreenState extends State<GoalScreen> {
                   child: Column(
                     children: <Widget>[
                       Text(
-                        '目標時間を設定してください',
+                        '今週の目標時間を設定してください',
                         style: const TextStyle(
                           color: kBlack,
                           fontWeight: FontWeight.bold,

@@ -50,6 +50,7 @@ dependencies:
   multi_select_flutter: ^4.1.3
   flutter_multi_select_items: ^0.4.2
   shared_preferences: ^2.0.12 # メモを保存するためのライブラリ
+  loading_animation_widget: ^1.2.0+4
 
 
 

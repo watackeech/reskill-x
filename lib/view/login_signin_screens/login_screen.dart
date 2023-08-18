@@ -22,6 +22,15 @@ class _LoginScreenState extends State<LoginScreen> {
   String autoEmail = "tanaka@gmail.com";
   String autoPassword = "tanaka111";
 
+  Widget createProgressIndicator() {
+    return Container(
+        alignment: Alignment.center,
+        child: const CircularProgressIndicator(
+          color: Colors.green,
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
