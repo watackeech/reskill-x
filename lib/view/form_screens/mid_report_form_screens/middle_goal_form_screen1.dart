@@ -44,7 +44,7 @@ class MiddleGoalFormScreen1 extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  UpFormScreen(title: '中間報告面談\n\nQ1. 以下のルールに\n同意してください！*'),
+                  UpFormScreen(title: '中間報告面談\n\nQ1. 以下のルールに同意して\nください！'),
                   SizedBox(height: 50),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,7 @@ class MiddleGoalFormScreen1 extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 80),
             DownFormScreen(
               currentPage:1,
               onTapped:(){
@@ -92,10 +92,26 @@ class MiddleGoalFormScreen2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 160),
-            UpFormScreen(title:'Q2. 1週～4週で学習した\n学習内容の共有をしてください。*'
+            SizedBox(height: 50),
+            UpFormScreen(title:'Q2. 1週～4週で学習した学習内容\nの共有をしてください。'
             ),
-            SizedBox(height: 170),
+            SizedBox(height: 60),
+            Text(
+              '・Pythonで〇〇のデータ分析をした',
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.left,
+            ),
+            Text(
+              '・Udemyで〇〇の講義をみて〇〇が\nできるようになった',
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.left,
+            ),
+            Text(
+              '・〇〇という教材で〇〇を勉強し、\nノートにまとめた。など',
+              style: TextStyle(fontSize: 16),
+              textAlign: TextAlign.left,
+            ),
+            SizedBox(height: 90),
             DownFormScreen(
               currentPage:2,
               onTapped:(){
@@ -120,7 +136,7 @@ class MiddleGoalFormScreen3 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title:'Q3. あなたは\n振り返り面談までの\n4週間何を勉強しますか？*'),
+            UpFormScreen(title:'Q3. あなたは振り返り面談までの\n4週間何を勉強しますか？'),
             SizedBox(height: 100),
             TextInputField(
               controller: inputController3,
@@ -162,14 +178,14 @@ class MiddleGoalFormScreen4 extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（参考書、Udemyの講座など）*'),
+          children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（参考書、Udemyの講座など）'),
             SizedBox(height: 125),
             TextInputField(
               controller: inputController4,
               icon: Icons.school,
               label: '勉強方法',
             ),
-            SizedBox(height: 125),
+            SizedBox(height: 105),
             DownFormScreen(
               currentPage:4,
               onTapped:(){
@@ -206,7 +222,7 @@ class MiddleGoalFormScreen5 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            UpFormScreen(title: 'Q5. 振り返り面談までに\n勉強する予定の目標時間を\n宣言してください*'),
+            UpFormScreen(title: 'Q5. 振り返り面談までに勉強する\n予定の目標時間を宣言してください'),
             SizedBox(height: 120),
             TextInputField(
               controller: inputController5,

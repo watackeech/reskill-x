@@ -12,7 +12,7 @@ class LoadingAnimation extends StatelessWidget {
       return Center(
         child: LoadingAnimationWidget.inkDrop(  //この部分
           color: kPrime,
-          size: 100,
+          size: 40,
         ), // ここで適切なローディングアニメーションを表示
       );
     } else {
