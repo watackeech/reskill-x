@@ -10,10 +10,12 @@ import 'package:reskill_x/constant/colors.dart';
 import 'package:reskill_x/utils/authentication.dart';
 import 'package:reskill_x/view/login_signin_screens/register_interest_screen.dart';
 import 'package:reskill_x/view/screen_control.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../model/account.dart';
 import '../../utils/firestore/user_firestore.dart';
 import 'login_screen.dart';
+import 'loading_animation_widget.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -29,6 +31,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   File? image;
   ImagePicker picker = ImagePicker();
+  bool _isLoading = false;
 
   Future<void> getImageFromGallery() async{
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -110,6 +113,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 buttonTitle: '新規登録',
                 onTapped: () async {
                   if(userNameController.text.isNotEmpty && emailController.text.isNotEmpty && passwordController.text.isNotEmpty && image != null){
+                    setState(() {
+                      _isLoading = true; // ローディング状態を true に変更
+                    });
                     var result = await Authentication.signUp(email: emailController.text, password: passwordController.text);
                     if(result is UserCredential){
                       String imagePath = await uploadImage(result.user!.uid);
@@ -126,6 +132,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterInterestScreen()));
                       }
                     }
+                    setState(() {
+                      _isLoading = false; // ローディング状態を false に戻す
+                    });
                   }
                 },
                 textStyle: TextStyle(
@@ -135,7 +144,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 minWidth: 110,
               ),
-              Row(
+                LoadingAnimation(isLoading: _isLoading),
+                Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("既にアカウントをお持ちですか？"),
