@@ -139,6 +139,7 @@ class RefrectionFormScreen3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -167,6 +168,7 @@ class RefrectionFormScreen3 extends StatelessWidget {
             ),
           ],
         ),
+        ),
       ),
     );
   }
@@ -182,6 +184,7 @@ class RefrectionFormScreen4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [UpFormScreen(title: 'Q4. どうやって勉強しましたか？\n（参考書、Udemyの講座など）'),
@@ -210,6 +213,7 @@ class RefrectionFormScreen4 extends StatelessWidget {
             SizedBox(height: 16),
           ],
         ),
+        ),
       ),
     );
   }
@@ -225,6 +229,7 @@ class RefrectionFormScreen5 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -253,6 +258,7 @@ class RefrectionFormScreen5 extends StatelessWidget {
             ),
             SizedBox(height: 16),
           ],
+        ),
         ),
       ),
     );

@@ -131,6 +131,7 @@ class SetGoalFormScreen3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -159,6 +160,7 @@ class SetGoalFormScreen3 extends StatelessWidget {
             ),
           ],
         ),
+        ),
       ),
     );
   }
@@ -174,6 +176,7 @@ class SetGoalFormScreen4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [UpFormScreen(title: 'Q4. どうやって勉強しますか？\n（〇〇という参考書、Udemyの〇〇\n講座など）'),
@@ -203,6 +206,7 @@ class SetGoalFormScreen4 extends StatelessWidget {
           ],
         ),
       ),
+      ),
     );
   }
 }
@@ -217,6 +221,7 @@ class SetGoalFormScreen5 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child:SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -245,6 +250,7 @@ class SetGoalFormScreen5 extends StatelessWidget {
             ),
             SizedBox(height: 16),
           ],
+        ),
         ),
       ),
     );
