@@ -83,9 +83,14 @@ class _MemoListScreenState extends State<MemoListScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(title: Text('もやメモ'),
+      appBar: AppBar(
+        // title: Text('もやメモ', style: TextStyle(color: kPrime)),
+        leading: null,
+        backgroundColor: Colors.white,
+        elevation: 0,
         actions: <Widget>[
           IconButton(
+            color: kPrime,
             icon: Icon(Icons.cloud),
             onPressed: () {
               // アイコンが押されたときの処理
@@ -93,7 +98,7 @@ class _MemoListScreenState extends State<MemoListScreen> {
               context: context,
               builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('パターン選択'),
+            title: Text('パターン選択',),
             content: SingleChildScrollView(
             child: ListBody(
             children: <Widget>[

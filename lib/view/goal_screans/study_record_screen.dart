@@ -36,9 +36,9 @@ class _StudyRecordScreenState extends State<StudyRecordScreen> {
         Column(
           children: [
             SizedBox(
-              height: size.height * 0.38,
+              height: size.height * 0.8,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
@@ -86,6 +86,9 @@ class _StudyRecordScreenState extends State<StudyRecordScreen> {
                             ),
                           ),
                         ]),
+                  ),
+                  SizedBox(
+                    height: 50,
                   ),
                   MainButton(
                     buttonColor: kPrime,

@@ -31,12 +31,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Reskill_X',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      debugShowCheckedModeBanner: false,
       //SafeAreaにすることで日付表示などに被らない
       // home: SafeArea(child: LoginScreen()),
       home: SafeArea(child: LoginScreen()),
